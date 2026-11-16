@@ -395,6 +395,145 @@ template<typename ST, typename DT, int bits> struct FixedPtCast
     DT operator()(ST val) const { return saturate_cast<DT>((val + DELTA)>>SHIFT); }
 };
 
+template<typename T>
+static void remapBilinearExact(const Mat& _src, Mat& _dst,
+                              const Mat& _map1, const Mat& _map2,
+                              int borderType, const Scalar& _borderValue,
+                              bool isRelative)
+{
+    const int cn = _src.channels();
+    const int srccols = _src.cols, srcrows = _src.rows;
+    const int dstcols = _dst.cols, dstrows = _dst.rows;
+    const size_t srcstep = _src.step / sizeof(T);
+    const size_t dststep = _dst.step / sizeof(T);
+    const size_t map1step = _map1.step / sizeof(float);
+    const bool interleavedMap = _map2.empty();
+    const size_t map2step = interleavedMap ? map1step : _map2.step / sizeof(float);
+
+    const T* src = _src.ptr<T>();
+    T* dst = _dst.ptr<T>();
+    const float* map1 = _map1.ptr<float>();
+    const float* map2 = interleavedMap ? map1 : _map2.ptr<float>();
+
+    T cval[CV_CN_MAX];
+    for (int k = 0; k < cn; k++)
+        cval[k] = saturate_cast<T>(_borderValue[k & 3]);
+
+    const int borderTypeX = borderType != BORDER_CONSTANT &&
+                            borderType != BORDER_TRANSPARENT &&
+                            srccols <= 1 ? BORDER_REPLICATE : borderType;
+    const int borderTypeY = borderType != BORDER_CONSTANT &&
+                            borderType != BORDER_TRANSPARENT &&
+                            srcrows <= 1 ? BORDER_REPLICATE : borderType;
+
+    parallel_for_(Range(0, dstrows), [&](const Range& range) {
+        AutoBuffer<T> pixbuf(4 * cn);
+        T* p00 = pixbuf.data();
+        T* p01 = p00 + cn;
+        T* p10 = p01 + cn;
+        T* p11 = p10 + cn;
+
+        for (int y = range.start; y < range.end; y++)
+        {
+            T* D = dst + y * dststep;
+            const float* sxRow = map1 + y * map1step;
+            const float* syRow = map2 + y * map2step;
+
+            for (int x = 0; x < dstcols; x++, D += cn)
+            {
+                float sx, sy;
+                if (interleavedMap)
+                {
+                    sx = sxRow[2 * x];
+                    sy = syRow[2 * x + 1];
+                }
+                else
+                {
+                    sx = sxRow[x];
+                    sy = syRow[x];
+                }
+
+                if (isRelative)
+                {
+                    sx += x;
+                    sy += y;
+                }
+
+                int ix = cvFloor(sx), iy = cvFloor(sy);
+                sx -= ix;
+                sy -= iy;
+
+                if ((unsigned)ix < (unsigned)(srccols - 1) &&
+                    (unsigned)iy < (unsigned)(srcrows - 1))
+                {
+                    const T* S = src + iy * srcstep + ix * cn;
+                    for (int k = 0; k < cn; k++)
+                    {
+                        float v0 = S[k] + sx * (S[cn + k] - S[k]);
+                        float v1 = S[srcstep + k] + sx * (S[srcstep + cn + k] - S[srcstep + k]);
+                        v0 += sy * (v1 - v0);
+                        D[k] = saturate_cast<T>(v0);
+                    }
+                    continue;
+                }
+
+                if ((borderType == BORDER_CONSTANT || borderType == BORDER_TRANSPARENT) &&
+                    (((unsigned)(ix + 1) >= (unsigned)(srccols + 1)) ||
+                     ((unsigned)(iy + 1) >= (unsigned)(srcrows + 1))))
+                {
+                    if (borderType == BORDER_CONSTANT)
+                        for (int k = 0; k < cn; k++)
+                            D[k] = cval[k];
+                    continue;
+                }
+
+                T* p[4] = { p00, p01, p10, p11 };
+                for (int dy = 0; dy < 2; dy++)
+                {
+                    for (int dx = 0; dx < 2; dx++)
+                    {
+                        T* P = p[dy * 2 + dx];
+                        const int xx = ix + dx, yy = iy + dy;
+                        if ((unsigned)xx < (unsigned)srccols &&
+                            (unsigned)yy < (unsigned)srcrows)
+                        {
+                            const T* S = src + yy * srcstep + xx * cn;
+                            for (int k = 0; k < cn; k++)
+                                P[k] = S[k];
+                        }
+                        else if (borderType == BORDER_CONSTANT)
+                        {
+                            for (int k = 0; k < cn; k++)
+                                P[k] = cval[k];
+                        }
+                        else if (borderType == BORDER_TRANSPARENT)
+                        {
+                            for (int k = 0; k < cn; k++)
+                                P[k] = D[k];
+                        }
+                        else
+                        {
+                            const int xxi = borderInterpolate(xx, srccols, borderTypeX);
+                            const int yyi = borderInterpolate(yy, srcrows, borderTypeY);
+                            const T* S = src + yyi * srcstep + xxi * cn;
+                            for (int k = 0; k < cn; k++)
+                                P[k] = S[k];
+                        }
+                    }
+                }
+
+                for (int k = 0; k < cn; k++)
+                {
+                    float v0 = p00[k] + sx * (p01[k] - p00[k]);
+                    float v1 = p10[k] + sx * (p11[k] - p10[k]);
+                    v0 += sy * (v1 - v0);
+                    D[k] = saturate_cast<T>(v0);
+                }
+            }
+        }
+    });
+}
+
 static inline int clip(int x, int a, int b)
 {
     return x >= a ? (x < b ? x : b-1) : a;
@@ -1553,6 +1692,10 @@ void cv::remap( InputArray _src, OutputArray _dst,
                     }
                     break;
                 }
+                case CV_8UC2: {
+                    CV_CPU_DISPATCH(remapLinearInvoker_8UC2, (src_data, src_step, src_rows, src_cols, dst_data, dst_step, dst_rows, dst_cols, borderType, borderValue.val, map1_data, map1_step, map2_data, map2_step, hasRelativeFlag), CV_CPU_DISPATCH_MODES_ALL);
+                    break;
+                }
                 case CV_8UC3: {
                     if (hint == cv::ALGO_HINT_APPROX) {
                         CV_CPU_DISPATCH(remapLinearApproxInvoker_8UC3, (src_data, src_step, src_rows, src_cols, dst_data, dst_step, dst_rows, dst_cols, borderType, borderValue.val, map1_data, map1_step, map2_data, map2_step, hasRelativeFlag), CV_CPU_DISPATCH_MODES_ALL);
@@ -1573,6 +1716,10 @@ void cv::remap( InputArray _src, OutputArray _dst,
                     CV_CPU_DISPATCH(remapLinearInvoker_16UC1, ((const uint16_t*)src_data, src_step, src_rows, src_cols, (uint16_t*)dst_data, dst_step, dst_rows, dst_cols, borderType, borderValue.val, map1_data, map1_step, map2_data, map2_step, hasRelativeFlag), CV_CPU_DISPATCH_MODES_ALL);
                     break;
                 }
+                case CV_16UC2: {
+                    CV_CPU_DISPATCH(remapLinearInvoker_16UC2, ((const uint16_t*)src_data, src_step, src_rows, src_cols, (uint16_t*)dst_data, dst_step, dst_rows, dst_cols, borderType, borderValue.val, map1_data, map1_step, map2_data, map2_step, hasRelativeFlag), CV_CPU_DISPATCH_MODES_ALL);
+                    break;
+                }
                 case CV_16UC3: {
                     CV_CPU_DISPATCH(remapLinearInvoker_16UC3, ((const uint16_t*)src_data, src_step, src_rows, src_cols, (uint16_t*)dst_data, dst_step, dst_rows, dst_cols, borderType, borderValue.val, map1_data, map1_step, map2_data, map2_step, hasRelativeFlag), CV_CPU_DISPATCH_MODES_ALL);
                     break;
@@ -1585,6 +1732,10 @@ void cv::remap( InputArray _src, OutputArray _dst,
                     CV_CPU_DISPATCH(remapLinearInvoker_32FC1, ((const float*)src_data, src_step, src_rows, src_cols, (float*)dst_data, dst_step, dst_rows, dst_cols, borderType, borderValue.val, map1_data, map1_step, map2_data, map2_step, hasRelativeFlag), CV_CPU_DISPATCH_MODES_ALL);
                     break;
                 }
+                case CV_32FC2: {
+                    CV_CPU_DISPATCH(remapLinearInvoker_32FC2, ((const float*)src_data, src_step, src_rows, src_cols, (float*)dst_data, dst_step, dst_rows, dst_cols, borderType, borderValue.val, map1_data, map1_step, map2_data, map2_step, hasRelativeFlag), CV_CPU_DISPATCH_MODES_ALL);
+                    break;
+                }
                 case CV_32FC3: {
                     CV_CPU_DISPATCH(remapLinearInvoker_32FC3, ((const float*)src_data, src_step, src_rows, src_cols, (float*)dst_data, dst_step, dst_rows, dst_cols, borderType, borderValue.val, map1_data, map1_step, map2_data, map2_step, hasRelativeFlag), CV_CPU_DISPATCH_MODES_ALL);
                     break;
@@ -1594,6 +1745,21 @@ void cv::remap( InputArray _src, OutputArray _dst,
                     break;
                 }
                 // no default
+            }
+
+            // Channel layouts not covered by the table-free kernels above must
+            // still use the same floating-point coordinate quantization.
+            if (src.depth() == CV_8U) {
+                remapBilinearExact<uchar>(src, dst, map1, map2, borderType, borderValue, hasRelativeFlag);
+                return;
+            }
+            if (src.depth() == CV_16U) {
+                remapBilinearExact<ushort>(src, dst, map1, map2, borderType, borderValue, hasRelativeFlag);
+                return;
+            }
+            if (src.depth() == CV_32F) {
+                remapBilinearExact<float>(src, dst, map1, map2, borderType, borderValue, hasRelativeFlag);
+                return;
             }
         }
     }

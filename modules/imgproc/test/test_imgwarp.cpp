@@ -1127,6 +1127,118 @@ TEST(Imgproc_Remap, issue_23562)
     }
 }
 
+TEST(Imgproc_Remap, channel_layout_consistency)
+{
+    const int width = 73, height = 61;
+    const int depths[] = { CV_8U, CV_16U, CV_32F };
+    const int borders[] = { BORDER_CONSTANT, BORDER_REPLICATE, BORDER_REFLECT,
+                            BORDER_REFLECT_101, BORDER_WRAP };
+    const Scalar borderValue(11, 37, 83, 129);
+
+    Mat mapx(height, width, CV_32F), mapy(height, width, CV_32F);
+    for (int y = 0; y < height; y++)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            mapx.at<float>(y, x) = 0.25f + x * 0.91f + 0.013f * std::sin(x * 0.7f);
+            mapy.at<float>(y, x) = 0.35f + y * 0.87f + 0.017f * std::cos(y * 0.9f);
+        }
+    }
+
+    for (int depth : depths)
+    {
+        Mat base(height, width, CV_MAKETYPE(depth, 1));
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                double v = x * 3.0 + y * 2.0;
+                if (depth == CV_8U)
+                    base.at<uchar>(y, x) = saturate_cast<uchar>(v);
+                else if (depth == CV_16U)
+                    base.at<ushort>(y, x) = saturate_cast<ushort>(v * 257.0);
+                else
+                    base.at<float>(y, x) = static_cast<float>(v * 257.0);
+            }
+        }
+
+        const int planeCount = 7;
+        std::vector<Mat> planes(planeCount);
+        for (int c = 0; c < planeCount; c++)
+        {
+            planes[c].create(height, width, CV_MAKETYPE(depth, 1));
+            const double scale = (c + 1) / 8.0;
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    if (depth == CV_8U)
+                        planes[c].at<uchar>(y, x) = saturate_cast<uchar>(base.at<uchar>(y, x) * scale);
+                    else if (depth == CV_16U)
+                        planes[c].at<ushort>(y, x) = saturate_cast<ushort>(base.at<ushort>(y, x) * scale);
+                    else
+                        planes[c].at<float>(y, x) = static_cast<float>(base.at<float>(y, x) * scale);
+                }
+            }
+        }
+
+        for (int border : borders)
+        {
+            std::vector<Mat> reference(planeCount);
+            for (int c = 0; c < planeCount; c++)
+                remap(planes[c], reference[c], mapx, mapy, INTER_LINEAR, border, borderValue);
+
+            for (int cn : { 1, 2, 3, 4, 5, 7 })
+            {
+                Mat src(height, width, CV_MAKETYPE(depth, cn));
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        for (int c = 0; c < cn; c++)
+                        {
+                            const int pc = c % planeCount;
+                            if (depth == CV_8U)
+                                src.ptr<uchar>(y, x)[c] = planes[pc].at<uchar>(y, x);
+                            else if (depth == CV_16U)
+                                src.ptr<ushort>(y, x)[c] = planes[pc].at<ushort>(y, x);
+                            else
+                                src.ptr<float>(y, x)[c] = planes[pc].at<float>(y, x);
+                        }
+                    }
+                }
+
+                Mat actual(height, width, src.type());
+                remap(src, actual, mapx, mapy, INTER_LINEAR, border, borderValue);
+                for (int c = 0; c < cn; c++)
+                {
+                    const int pc = c % planeCount;
+                    for (int y = 0; y < height; y++)
+                    {
+                        for (int x = 0; x < width; x++)
+                        {
+                            if (depth == CV_8U)
+                                EXPECT_EQ(reference[pc].at<uchar>(y, x), actual.ptr<uchar>(y, x)[c]);
+                            else if (depth == CV_16U)
+                                EXPECT_EQ(reference[pc].at<ushort>(y, x), actual.ptr<ushort>(y, x)[c]);
+                            else
+                                EXPECT_NEAR(reference[pc].at<float>(y, x), actual.ptr<float>(y, x)[c], 1e-2f);
+                        }
+                    }
+                }
+
+                Mat first = actual.clone();
+                for (int iteration = 0; iteration < 10; iteration++)
+                {
+                    Mat repeated(height, width, src.type());
+                    remap(src, repeated, mapx, mapy, INTER_LINEAR, border, borderValue);
+                    ASSERT_EQ(0, cvtest::norm(first, repeated, NORM_INF));
+                }
+            }
+        }
+    }
+}
+
 typedef testing::TestWithParam<tuple<int, int> > Imgproc_RemapManyChannels;
 
 TEST_P(Imgproc_RemapManyChannels, linear)

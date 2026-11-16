@@ -29,6 +29,9 @@
 #define CV_WARP_VECTOR_GET_ADDR_C1() \
     v_int32 addr_0 = v_muladd(v_srcstep, src_iy0, src_ix0), \
             addr_1 = v_muladd(v_srcstep, src_iy1, src_ix1);
+#define CV_WARP_VECTOR_GET_ADDR_C2() \
+    v_int32 addr_0 = v_muladd(v_srcstep, src_iy0, v_mul(src_ix0, two)), \
+            addr_1 = v_muladd(v_srcstep, src_iy1, v_mul(src_ix1, two));
 #define CV_WARP_VECTOR_GET_ADDR_C3() \
     v_int32 addr_0 = v_muladd(v_srcstep, src_iy0, v_mul(src_ix0, three)), \
             addr_1 = v_muladd(v_srcstep, src_iy1, v_mul(src_ix1, three));
@@ -282,6 +285,10 @@ void remapLinearInvoker_8UC1(const uint8_t *src_data, size_t src_step, int src_r
                              uint8_t *dst_data, size_t dst_step, int dst_rows, int dst_cols,
                              int border_type, const double border_value[4],
                              const float *map1_data, size_t map1_step, const float *map2_data, size_t map2_step, bool is_relative);
+void remapLinearInvoker_8UC2(const uint8_t *src_data, size_t src_step, int src_rows, int src_cols,
+                             uint8_t *dst_data, size_t dst_step, int dst_rows, int dst_cols,
+                             int border_type, const double border_value[4],
+                             const float *map1_data, size_t map1_step, const float *map2_data, size_t map2_step, bool is_relative);
 void remapLinearInvoker_8UC3(const uint8_t *src_data, size_t src_step, int src_rows, int src_cols,
                              uint8_t *dst_data, size_t dst_step, int dst_rows, int dst_cols,
                              int border_type, const double border_value[4],
@@ -294,6 +301,10 @@ void remapLinearInvoker_16UC1(const uint16_t *src_data, size_t src_step, int src
                               uint16_t *dst_data, size_t dst_step, int dst_rows, int dst_cols,
                               int border_type, const double border_value[4],
                               const float *map1_data, size_t map1_step, const float *map2_data, size_t map2_step, bool is_relative);
+void remapLinearInvoker_16UC2(const uint16_t *src_data, size_t src_step, int src_rows, int src_cols,
+                              uint16_t *dst_data, size_t dst_step, int dst_rows, int dst_cols,
+                              int border_type, const double border_value[4],
+                              const float *map1_data, size_t map1_step, const float *map2_data, size_t map2_step, bool is_relative);
 void remapLinearInvoker_16UC3(const uint16_t *src_data, size_t src_step, int src_rows, int src_cols,
                               uint16_t *dst_data, size_t dst_step, int dst_rows, int dst_cols,
                               int border_type, const double border_value[4],
@@ -303,6 +314,10 @@ void remapLinearInvoker_16UC4(const uint16_t *src_data, size_t src_step, int src
                               int border_type, const double border_value[4],
                               const float *map1_data, size_t map1_step, const float *map2_data, size_t map2_step, bool is_relative);
 void remapLinearInvoker_32FC1(const float *src_data, size_t src_step, int src_rows, int src_cols,
+                              float *dst_data, size_t dst_step, int dst_rows, int dst_cols,
+                              int border_type, const double border_value[4],
+                              const float *map1_data, size_t map1_step, const float *map2_data, size_t map2_step, bool is_relative);
+void remapLinearInvoker_32FC2(const float *src_data, size_t src_step, int src_rows, int src_cols,
                               float *dst_data, size_t dst_step, int dst_rows, int dst_cols,
                               int border_type, const double border_value[4],
                               const float *map1_data, size_t map1_step, const float *map2_data, size_t map2_step, bool is_relative);
@@ -5681,6 +5696,119 @@ void remapLinearInvoker_8UC1(const uint8_t *src_data, size_t src_step, int src_r
     parallel_for_(Range(0, dst_rows), worker);
 }
 
+void remapLinearInvoker_8UC2(const uint8_t *src_data, size_t src_step, int src_rows, int src_cols,
+                             uint8_t *dst_data, size_t dst_step, int dst_rows, int dst_cols,
+                             int border_type, const double border_value[4],
+                             const float *map1_data, size_t map1_step, const float *map2_data, size_t map2_step, bool is_relative) {
+    auto worker = [&](const Range &r) {
+        CV_INSTRUMENT_REGION();
+
+        const auto *src = src_data;
+        auto *dst = dst_data;
+        auto *map1 = map1_data, *map2 = map2_data;
+        size_t srcstep = src_step, dststep = dst_step,
+               map1step = map1_step/sizeof(float), map2step=map2_step/sizeof(float);
+        if (map2 == nullptr) {
+            map2 = map1;
+            map2step = map1step;
+        }
+        int srccols = src_cols, srcrows = src_rows;
+        int dstcols = dst_cols;
+        bool relative = is_relative;
+
+        uint8_t bval[] = {
+            saturate_cast<uint8_t>(border_value[0]),
+            saturate_cast<uint8_t>(border_value[1]),
+            saturate_cast<uint8_t>(border_value[2]),
+            saturate_cast<uint8_t>(border_value[3]),
+        };
+        int border_type_x = border_type != BORDER_CONSTANT &&
+                            border_type != BORDER_TRANSPARENT &&
+                            srccols <= 1 ? BORDER_REPLICATE : border_type;
+        int border_type_y = border_type != BORDER_CONSTANT &&
+                            border_type != BORDER_TRANSPARENT &&
+                            srcrows <= 1 ? BORDER_REPLICATE : border_type;
+
+#if (CV_SIMD || CV_SIMD_SCALABLE)
+        constexpr int max_vlanes_16{VTraits<v_uint16>::max_nlanes};
+        constexpr int max_vlanes_32{VTraits<v_float32>::max_nlanes};
+        constexpr int max_uf{max_vlanes_32*2};
+        int vlanes_16 = VTraits<v_uint16>::vlanes();
+        int vlanes_32 = VTraits<v_float32>::vlanes();
+        // unrolling_factor = lane_size / 16 = vlanes_32 * 32 / 16 = vlanes_32 * 2
+        int uf = vlanes_32 * 2;
+
+        std::array<float, max_vlanes_32> start_indices;
+        std::iota(start_indices.data(), start_indices.data() + max_vlanes_32, 0.f);
+
+        v_uint32 inner_srows = vx_setall_u32((unsigned)std::max(srcrows - 2, 0)),
+                 inner_scols = vx_setall_u32((unsigned)srccols - 1),
+                 outer_srows = vx_setall_u32((unsigned)srcrows + 1),
+                 outer_scols = vx_setall_u32((unsigned)srccols + 1);
+        v_float32 delta = vx_setall_f32(static_cast<float>(uf));
+        v_int32 one = vx_setall_s32(1), two = vx_setall_s32(2);
+        v_int32 v_srcstep = vx_setall_s32(int(srcstep));
+        int32_t addr[max_uf],
+                src_ix[max_uf],
+                src_iy[max_uf];
+        uint8_t pixbuf[max_uf*4*2];
+
+        uint8_t bvalbuf[max_uf*2];
+        for (int i = 0; i < uf; i++) {
+            bvalbuf[i*2] = bval[0];
+            bvalbuf[i*2+1] = bval[1];
+        }
+        v_uint8 bval_v0 = vx_load_low(&bvalbuf[0]);
+        v_uint8 bval_v1 = vx_load_low(&bvalbuf[uf]);
+#endif
+
+        for (int y = r.start; y < r.end; y++) {
+            uint8_t* dstptr = dst + y*dststep;
+            const float *sx_data = map1 + y*map1step;
+            const float *sy_data = map2 + y*map2step;
+            int x = 0;
+
+#if (CV_SIMD || CV_SIMD_SCALABLE)
+            CV_REMAP_VECTOR_COMPUTE_MAPPED_COORD1();
+            for (; x <= dstcols - uf; x += uf) {
+                // [TODO] apply halide trick
+                CV_REMAP_VECTOR_COMPUTE_MAPPED_COORD2(LINEAR, C2);
+                if (v_reduce_min(inner_mask) != 0) {
+                    CV_WARP_VECTOR_SHUFFLE_ALLWITHIN(LINEAR, C2, 8U);
+                } else {
+                    CV_WARP_VECTOR_SHUFFLE_NOTALLWITHIN(LINEAR, C2, 8U);
+                }
+                CV_WARP_VECTOR_INTER_LOAD(LINEAR, C2, 8U, 16U);
+                CV_WARP_LINEAR_VECTOR_INTER_CONVERT_U16F32(C2);
+                CV_WARP_LINEAR_VECTOR_INTER_CALC_F32(C2);
+                CV_WARP_LINEAR_VECTOR_INTER_STORE_F32U8(C2);
+            }
+#endif // (CV_SIMD || CV_SIMD_SCALABLE)
+
+            for (; x < dstcols; x++) {
+                float sx, sy;
+                if (map1 == map2) {
+                    sx = sx_data[2*x];
+                    sy = sy_data[2*x+1];
+                } else {
+                    sx = sx_data[x];
+                    sy = sy_data[x];
+                }
+
+                if (relative) {
+                    sx += x;
+                    sy += y;
+                }
+
+                CV_WARP_SCALAR_SHUFFLE(LINEAR, C2, 8U);
+                CV_WARP_SCALAR_LINEAR_INTER_CALC_F32(C2);
+                CV_WARP_SCALAR_STORE(LINEAR, C2, 8U);
+            }
+        }
+    };
+    parallel_for_(Range(0, dst_rows), worker);
+}
+
 void remapLinearInvoker_8UC3(const uint8_t *src_data, size_t src_step, int src_rows, int src_cols,
                              uint8_t *dst_data, size_t dst_step, int dst_rows, int dst_cols,
                              int border_type, const double border_value[4],
@@ -6054,6 +6182,117 @@ void remapLinearInvoker_16UC1(const uint16_t *src_data, size_t src_step, int src
     parallel_for_(Range(0, dst_rows), worker);
 }
 
+void remapLinearInvoker_16UC2(const uint16_t *src_data, size_t src_step, int src_rows, int src_cols,
+                              uint16_t *dst_data, size_t dst_step, int dst_rows, int dst_cols,
+                              int border_type, const double border_value[4],
+                              const float *map1_data, size_t map1_step, const float *map2_data, size_t map2_step, bool is_relative) {
+    auto worker = [&](const Range &r) {
+        CV_INSTRUMENT_REGION();
+
+        const auto *src = src_data;
+        auto *dst = dst_data;
+        auto *map1 = map1_data, *map2 = map2_data;
+        size_t srcstep = src_step/sizeof(uint16_t), dststep = dst_step/sizeof(uint16_t),
+               map1step = map1_step/sizeof(float), map2step=map2_step/sizeof(float);
+        if (map2 == nullptr) {
+            map2 = map1;
+            map2step = map1step;
+        }
+        int srccols = src_cols, srcrows = src_rows;
+        int dstcols = dst_cols;
+        bool relative = is_relative;
+
+        uint16_t bval[] = {
+            saturate_cast<uint16_t>(border_value[0]),
+            saturate_cast<uint16_t>(border_value[1]),
+            saturate_cast<uint16_t>(border_value[2]),
+            saturate_cast<uint16_t>(border_value[3]),
+        };
+        int border_type_x = border_type != BORDER_CONSTANT &&
+                            border_type != BORDER_TRANSPARENT &&
+                            srccols <= 1 ? BORDER_REPLICATE : border_type;
+        int border_type_y = border_type != BORDER_CONSTANT &&
+                            border_type != BORDER_TRANSPARENT &&
+                            srcrows <= 1 ? BORDER_REPLICATE : border_type;
+
+#if (CV_SIMD || CV_SIMD_SCALABLE)
+        constexpr int max_vlanes_32{VTraits<v_float32>::max_nlanes};
+        constexpr int max_uf{max_vlanes_32*2};
+        int vlanes_32 = VTraits<v_float32>::vlanes();
+        // unrolling_factor = lane_size / 16 = vlanes_32 * 32 / 16 = vlanes_32 * 2
+        int uf = vlanes_32 * 2;
+
+        std::array<float, max_vlanes_32> start_indices;
+        std::iota(start_indices.data(), start_indices.data() + max_vlanes_32, 0.f);
+
+        v_uint32 inner_srows = vx_setall_u32((unsigned)std::max(srcrows - 2, 0)),
+                 inner_scols = vx_setall_u32((unsigned)srccols - 1),
+                 outer_srows = vx_setall_u32((unsigned)srcrows + 1),
+                 outer_scols = vx_setall_u32((unsigned)srccols + 1);
+        v_float32 delta = vx_setall_f32(static_cast<float>(uf));
+        v_int32 one = vx_setall_s32(1), two = vx_setall_s32(2);
+        v_int32 v_srcstep = vx_setall_s32(int(srcstep));
+        int32_t addr[max_uf],
+                src_ix[max_uf],
+                src_iy[max_uf];
+        uint16_t pixbuf[max_uf*4*2];
+
+        uint16_t bvalbuf[max_uf*2];
+        for (int i = 0; i < uf; i++) {
+            bvalbuf[i*2] = bval[0];
+            bvalbuf[i*2+1] = bval[1];
+        }
+        v_uint16 bval_v0 = vx_load(&bvalbuf[0]);
+        v_uint16 bval_v1 = vx_load(&bvalbuf[uf]);
+#endif
+
+        for (int y = r.start; y < r.end; y++) {
+            uint16_t* dstptr = dst + y*dststep;
+            const float *sx_data = map1 + y*map1step;
+            const float *sy_data = map2 + y*map2step;
+            int x = 0;
+
+#if (CV_SIMD || CV_SIMD_SCALABLE)
+            CV_REMAP_VECTOR_COMPUTE_MAPPED_COORD1();
+            for (; x <= dstcols - uf; x += uf) {
+                // [TODO] apply halide trick
+                CV_REMAP_VECTOR_COMPUTE_MAPPED_COORD2(LINEAR, C2);
+                if (v_reduce_min(inner_mask) != 0) {
+                    CV_WARP_VECTOR_SHUFFLE_ALLWITHIN(LINEAR, C2, 16U);
+                } else {
+                    CV_WARP_VECTOR_SHUFFLE_NOTALLWITHIN(LINEAR, C2, 16U);
+                }
+                CV_WARP_VECTOR_INTER_LOAD(LINEAR, C2, 16U, 16U);
+                CV_WARP_LINEAR_VECTOR_INTER_CONVERT_U16F32(C2);
+                CV_WARP_LINEAR_VECTOR_INTER_CALC_F32(C2);
+                CV_WARP_LINEAR_VECTOR_INTER_STORE_F32U16(C2);
+            }
+#endif // (CV_SIMD || CV_SIMD_SCALABLE)
+
+            for (; x < dstcols; x++) {
+                float sx, sy;
+                if (map1 == map2) {
+                    sx = sx_data[2*x];
+                    sy = sy_data[2*x+1];
+                } else {
+                    sx = sx_data[x];
+                    sy = sy_data[x];
+                }
+
+                if (relative) {
+                    sx += x;
+                    sy += y;
+                }
+
+                CV_WARP_SCALAR_SHUFFLE(LINEAR, C2, 16U);
+                CV_WARP_SCALAR_LINEAR_INTER_CALC_F32(C2);
+                CV_WARP_SCALAR_STORE(LINEAR, C2, 16U);
+            }
+        }
+    };
+    parallel_for_(Range(0, dst_rows), worker);
+}
+
 void remapLinearInvoker_16UC3(const uint16_t *src_data, size_t src_step, int src_rows, int src_cols,
                               uint16_t *dst_data, size_t dst_step, int dst_rows, int dst_cols,
                               int border_type, const double border_value[4],
@@ -6396,6 +6635,118 @@ void remapLinearInvoker_32FC1(const float *src_data, size_t src_step, int src_ro
                 CV_WARP_SCALAR_SHUFFLE(LINEAR, C1, 32F);
                 CV_WARP_SCALAR_LINEAR_INTER_CALC_F32(C1);
                 CV_WARP_SCALAR_STORE(LINEAR, C1, 32F);
+            }
+        }
+    };
+    parallel_for_(Range(0, dst_rows), worker);
+}
+
+void remapLinearInvoker_32FC2(const float *src_data, size_t src_step, int src_rows, int src_cols,
+                              float *dst_data, size_t dst_step, int dst_rows, int dst_cols,
+                              int border_type, const double border_value[4],
+                              const float *map1_data, size_t map1_step, const float *map2_data, size_t map2_step, bool is_relative) {
+    auto worker = [&](const Range &r) {
+        CV_INSTRUMENT_REGION();
+
+        const auto *src = src_data;
+        auto *dst = dst_data;
+        auto *map1 = map1_data, *map2 = map2_data;
+        size_t srcstep = src_step/sizeof(float), dststep = dst_step/sizeof(float),
+               map1step = map1_step/sizeof(float), map2step=map2_step/sizeof(float);
+        if (map2 == nullptr) {
+            map2 = map1;
+            map2step = map1step;
+        }
+        int srccols = src_cols, srcrows = src_rows;
+        int dstcols = dst_cols;
+        bool relative = is_relative;
+
+        float bval[] = {
+            saturate_cast<float>(border_value[0]),
+            saturate_cast<float>(border_value[1]),
+            saturate_cast<float>(border_value[2]),
+            saturate_cast<float>(border_value[3]),
+        };
+        int border_type_x = border_type != BORDER_CONSTANT &&
+                            border_type != BORDER_TRANSPARENT &&
+                            srccols <= 1 ? BORDER_REPLICATE : border_type;
+        int border_type_y = border_type != BORDER_CONSTANT &&
+                            border_type != BORDER_TRANSPARENT &&
+                            srcrows <= 1 ? BORDER_REPLICATE : border_type;
+
+#if (CV_SIMD || CV_SIMD_SCALABLE)
+        constexpr int max_vlanes_32{VTraits<v_float32>::max_nlanes};
+        constexpr int max_uf{max_vlanes_32*2};
+        int vlanes_32 = VTraits<v_float32>::vlanes();
+        // unrolling_factor = lane_size / 16 = vlanes_32 * 32 / 16 = vlanes_32 * 2
+        int uf = vlanes_32 * 2;
+
+        std::array<float, max_vlanes_32> start_indices;
+        std::iota(start_indices.data(), start_indices.data() + max_vlanes_32, 0.f);
+
+        v_uint32 inner_srows = vx_setall_u32((unsigned)std::max(srcrows - 2, 0)),
+                 inner_scols = vx_setall_u32((unsigned)srccols - 1),
+                 outer_srows = vx_setall_u32((unsigned)srcrows + 1),
+                 outer_scols = vx_setall_u32((unsigned)srccols + 1);
+        v_float32 delta = vx_setall_f32(static_cast<float>(uf));
+        v_int32 one = vx_setall_s32(1), two = vx_setall_s32(2);
+        v_int32 v_srcstep = vx_setall_s32(int(srcstep));
+        int32_t addr[max_uf],
+                src_ix[max_uf],
+                src_iy[max_uf];
+        float pixbuf[max_uf*4*2];
+
+        float bvalbuf[max_uf*2];
+        for (int i = 0; i < uf; i++) {
+            bvalbuf[i*2] = bval[0];
+            bvalbuf[i*2+1] = bval[1];
+        }
+        v_float32 bval_v0_l = vx_load(&bvalbuf[0]);
+        v_float32 bval_v0_h = vx_load(&bvalbuf[vlanes_32]);
+        v_float32 bval_v1_l = vx_load(&bvalbuf[uf]);
+        v_float32 bval_v1_h = vx_load(&bvalbuf[uf + vlanes_32]);
+#endif
+
+        for (int y = r.start; y < r.end; y++) {
+            float* dstptr = dst + y*dststep;
+            const float *sx_data = map1 + y*map1step;
+            const float *sy_data = map2 + y*map2step;
+            int x = 0;
+
+#if (CV_SIMD || CV_SIMD_SCALABLE)
+            CV_REMAP_VECTOR_COMPUTE_MAPPED_COORD1();
+            for (; x <= dstcols - uf; x += uf) {
+                // [TODO] apply halide trick
+                CV_REMAP_VECTOR_COMPUTE_MAPPED_COORD2(LINEAR, C2);
+                if (v_reduce_min(inner_mask) != 0) {
+                    CV_WARP_VECTOR_SHUFFLE_ALLWITHIN(LINEAR, C2, 32F);
+                } else {
+                    CV_WARP_VECTOR_SHUFFLE_NOTALLWITHIN(LINEAR, C2, 32F);
+                }
+                CV_WARP_VECTOR_INTER_LOAD(LINEAR, C2, 32F, 32F);
+                CV_WARP_LINEAR_VECTOR_INTER_CALC_F32(C2);
+                CV_WARP_LINEAR_VECTOR_INTER_STORE_F32F32(C2);
+            }
+#endif // (CV_SIMD || CV_SIMD_SCALABLE)
+
+            for (; x < dstcols; x++) {
+                float sx, sy;
+                if (map1 == map2) {
+                    sx = sx_data[2*x];
+                    sy = sy_data[2*x+1];
+                } else {
+                    sx = sx_data[x];
+                    sy = sy_data[x];
+                }
+
+                if (relative) {
+                    sx += x;
+                    sy += y;
+                }
+
+                CV_WARP_SCALAR_SHUFFLE(LINEAR, C2, 32F);
+                CV_WARP_SCALAR_LINEAR_INTER_CALC_F32(C2);
+                CV_WARP_SCALAR_STORE(LINEAR, C2, 32F);
             }
         }
     };

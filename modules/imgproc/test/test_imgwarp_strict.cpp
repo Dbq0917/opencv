@@ -717,6 +717,9 @@ protected:
     void new_linear_c1(int x, float sx, float sy, const T *srcptr_, T *dstptr, int srccols, int srcrows, size_t srcstep,
                        const T *bval, int borderType_x, int borderType_y);
     template<typename T>
+    void new_linear_c2(int x, float sx, float sy, const T *srcptr_, T *dstptr, int srccols, int srcrows, size_t srcstep,
+                       const T *bval, int borderType_x, int borderType_y);
+    template<typename T>
     void new_linear_c3(int x, float sx, float sy, const T *srcptr_, T *dstptr, int srccols, int srcrows, size_t srcstep,
                        const T *bval, int borderType_x, int borderType_y);
     template<typename T>
@@ -899,15 +902,15 @@ void CV_Remap_Test::run_reference_func()
     if ((interpolation == INTER_LINEAR) && mapx.depth() == CV_32F) {
         int src_depth = src.depth(), src_channels = src.channels();
         Mat tmp = Mat::zeros(dst.size(), dst.type());
-        if (src_depth == CV_8U && (src_channels == 1 || src_channels == 3 || src_channels == 4)) {
+        if (src_depth == CV_8U && src_channels <= 4) {
             new_remap<uint8_t>(src, tmp, interpolation);
             tmp.convertTo(reference_dst, reference_dst.depth());
             return;
-        } else if (src_depth == CV_16U && (src_channels == 1 || src_channels == 3 || src_channels == 4)) {
+        } else if (src_depth == CV_16U && src_channels <= 4) {
             new_remap<uint16_t>(src, tmp, interpolation);
             tmp.convertTo(reference_dst, reference_dst.depth());
             return;
-        } else if (src_depth == CV_32F && (src_channels == 1 || src_channels == 3 || src_channels == 4)) {
+        } else if (src_depth == CV_32F && src_channels <= 4) {
             new_remap<float>(src, tmp, interpolation);
             tmp.convertTo(reference_dst, reference_dst.depth());
             return;
@@ -1037,6 +1040,21 @@ void CV_Remap_Test::new_linear_c1(int x, float sx, float sy, const T *srcptr_, T
     warp_linear_calc(1, pxy, dstptr+x, sx, sy);
 }
 template<typename T>
+void CV_Remap_Test::new_linear_c2(int x, float sx, float sy, const T *srcptr_, T *dstptr,
+                                  int srccols, int srcrows, size_t srcstep,
+                                  const T *bval, int borderType_x, int borderType_y)
+{
+    int ix = (int)floorf(sx), iy = (int)floorf(sy);
+    sx -= ix; sy -= iy;
+
+    T pxy[8];
+    const T *srcptr = srcptr_ + srcstep*iy + ix*2;
+
+    WARP_SHUFFLE(LINEAR, 2);
+
+    warp_linear_calc(2, pxy, dstptr+x*2, sx, sy);
+}
+template<typename T>
 void CV_Remap_Test::new_linear_c3(int x, float sx, float sy, const T *srcptr_, T *dstptr,
                                   int srccols, int srcrows, size_t srcstep,
                                   const T *bval, int borderType_x, int borderType_y)
@@ -1071,7 +1089,7 @@ template <typename T>
 void CV_Remap_Test::new_remap(const Mat &_src, Mat &_dst, int inter) {
     CV_UNUSED(inter);
     int src_channels = _src.channels();
-    CV_CheckTrue(_src.channels() == 1 || _src.channels() == 3 || _src.channels() == 4, "");
+    CV_CheckTrue(_src.channels() >= 1 && _src.channels() <= 4, "");
     CV_CheckTrue(mapx.depth() == CV_32F, "");
     CV_CheckTrue(mapx.channels() == 1 || mapx.channels() == 2, "");
 
@@ -1111,7 +1129,9 @@ void CV_Remap_Test::new_remap(const Mat &_src, Mat &_dst, int inter) {
                 sy = mapx_data[2*offset+1];
             }
 
-            if (src_channels == 3) {
+            if (src_channels == 2) {
+                new_linear_c2(x, sx, sy, srcptr_, dstptr, srccols, srcrows, srcstep, bval, borderType_x, borderType_y);
+            } else if (src_channels == 3) {
                 new_linear_c3(x, sx, sy, srcptr_, dstptr, srccols, srcrows, srcstep, bval, borderType_x, borderType_y);
             } else if (src_channels == 4) {
                 new_linear_c4(x, sx, sy, srcptr_, dstptr, srccols, srcrows, srcstep, bval, borderType_x, borderType_y);
