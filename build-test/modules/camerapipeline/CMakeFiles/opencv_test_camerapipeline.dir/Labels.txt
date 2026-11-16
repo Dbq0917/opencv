@@ -1,0 +1,17 @@
+# Target labels
+ Main
+ opencv_camerapipeline
+ AccuracyTest
+# Source files and their labels
+/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/test/test_camerapipeline.cpp
+ Main
+ opencv_camerapipeline
+ AccuracyTest
+/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/test/test_main.cpp
+ Main
+ opencv_camerapipeline
+ AccuracyTest
+/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/test/test_precomp.hpp
+ Main
+ opencv_camerapipeline
+ AccuracyTest

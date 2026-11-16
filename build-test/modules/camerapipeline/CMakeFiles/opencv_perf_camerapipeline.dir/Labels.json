@@ -1,0 +1,42 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/perf/perf_convert.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_camerapipeline",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/perf/perf_main.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_camerapipeline",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/perf/perf_precomp.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_camerapipeline",
+				"PerfTest"
+			]
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Main",
+			"opencv_camerapipeline",
+			"PerfTest"
+		],
+		"name" : "opencv_perf_camerapipeline"
+	}
+}

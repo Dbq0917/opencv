@@ -1,0 +1,17 @@
+# Target labels
+ Main
+ opencv_camerapipeline
+ PerfTest
+# Source files and their labels
+/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/perf/perf_convert.cpp
+ Main
+ opencv_camerapipeline
+ PerfTest
+/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/perf/perf_main.cpp
+ Main
+ opencv_camerapipeline
+ PerfTest
+/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/perf/perf_precomp.hpp
+ Main
+ opencv_camerapipeline
+ PerfTest

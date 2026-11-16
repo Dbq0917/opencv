@@ -1,0 +1,48 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/include/opencv2/camerapipeline.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_camerapipeline",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/src/convert.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_camerapipeline",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/src/precomp.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_camerapipeline",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlribS/build-test/cvconfig.h"
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlribS/build-test/opencv2/opencv_modules.hpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Main",
+			"opencv_camerapipeline",
+			"Module"
+		],
+		"name" : "opencv_camerapipeline"
+	}
+}

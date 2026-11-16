@@ -1,0 +1,42 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/test/test_camerapipeline.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_camerapipeline",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/test/test_main.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_camerapipeline",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlribS/modules/camerapipeline/test/test_precomp.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_camerapipeline",
+				"AccuracyTest"
+			]
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Main",
+			"opencv_camerapipeline",
+			"AccuracyTest"
+		],
+		"name" : "opencv_test_camerapipeline"
+	}
+}
