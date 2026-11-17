@@ -2477,6 +2477,28 @@ public:
     /** @overload */
     template<typename _Tp, typename Functor> void forEach(const Functor& operation) const;
 
+    /** @brief Runs the given functor over all matrix elements in parallel, using a custom
+    index computer.
+
+    This overload behaves exactly like the single-argument forEach, but the byte offset of every
+    element is taken from `indexComputer` instead of the matrix steps. It allows plugging in new
+    memory layouts without changing the traversal interface or the callback signature.
+
+    @param operation functor with signature `void(_Tp& element, const int* position)`. The
+    position array keeps its documented `const int*` semantics: one index per matrix dimension,
+    each in `[0, size[d])`.
+    @param indexComputer callable with signature
+    `size_t operator()(const Mat& m, const int* position) const` returning the byte offset of the
+    element relative to `m.data`. It must be copyable and safe to call concurrently from the
+    parallel worker threads. Pass cv::MatIndexComputer (or omit this overload) for the standard
+    step-based layout.
+     */
+    template<typename _Tp, typename Functor, typename IndexComputer>
+    void forEach(const Functor& operation, const IndexComputer& indexComputer);
+    /** @overload */
+    template<typename _Tp, typename Functor, typename IndexComputer>
+    void forEach(const Functor& operation, const IndexComputer& indexComputer) const;
+
     Mat(Mat&& m) CV_NOEXCEPT;
     Mat& operator = (Mat&& m);
 
@@ -2521,6 +2543,8 @@ public:
 
 protected:
     template<typename _Tp, typename Functor> void forEach_impl(const Functor& operation);
+    template<typename _Tp, typename Functor, typename IndexComputer>
+    void forEach_impl(const Functor& operation, const IndexComputer& indexComputer);
 };
 
 
@@ -2662,6 +2686,11 @@ public:
     // the operations take care of skipping gaps in the end of rows (if any)
     template<typename Functor> void forEach(const Functor& operation);
     template<typename Functor> void forEach(const Functor& operation) const;
+    /** @overload custom index computer, see cv::Mat::forEach. */
+    template<typename Functor, typename IndexComputer>
+    void forEach(const Functor& operation, const IndexComputer& indexComputer);
+    template<typename Functor, typename IndexComputer>
+    void forEach(const Functor& operation, const IndexComputer& indexComputer) const;
 
     //! equivalent to Mat::create(_rows, _cols, DataType<_Tp>::type)
     void create(int _rows, int _cols);

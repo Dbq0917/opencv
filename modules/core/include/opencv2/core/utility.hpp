@@ -725,8 +725,75 @@ void parallel_for_(const Range& range, std::function<void(const Range&)> functor
 
 
 /////////////////////////////// forEach method of cv::Mat ////////////////////////////
+
+/** @brief Default index computer used by cv::Mat::forEach.
+
+Computes the byte offset of an element from its multi-dimensional position using the matrix
+steps, exactly as documented for cv::Mat:
+
+@code
+    addr = data + sum(position[d] * step[d])
+@endcode
+
+All arithmetic is performed on `size_t`, so position/offset math never produces a negative
+value and wraps safely for very large matrices. The type is copyable and stateless, hence
+safe to share between the worker threads of the parallel backend. Custom layouts can plug in
+any callable with the same signature:
+
+@code
+    size_t operator()(const cv::Mat& m, const int* position) const;
+@code
+
+The returned offset is always expressed in bytes relative to `m.data`.
+ */
+struct CV_EXPORTS MatIndexComputer
+{
+    size_t operator()(const Mat& m, const int* position) const
+    {
+        size_t offset = 0;
+        for (int d = 0; d < m.dims; ++d)
+        {
+            // unsigned arithmetic: never goes negative and wraps safely
+            offset += static_cast<size_t>(position[d]) * m.step[d];
+        }
+        return offset;
+    }
+};
+
+namespace detail {
+namespace forEach {
+
+// Portable restrict qualifier: GCC/Clang use the double-underscore spelling, MSVC uses the
+// single-underscore one. Keeping the per-thread position buffer restrict-qualified lets the
+// compiler keep the indices in registers inside the hot inner loop.
+#if defined(__GNUC__) || defined(__clang__)
+#  define CV_FOR_EACH_RESTRICT __restrict__
+#elif defined(_MSC_VER)
+#  define CV_FOR_EACH_RESTRICT __restrict
+#else
+#  define CV_FOR_EACH_RESTRICT
+#endif
+
+// Detects the built-in step-based index computer so that the hot path can avoid the
+// per-element virtual/callback overhead and walk storage directly. Any user-injected
+// callable takes the generic, fully step-driven path instead.
+template<typename IndexComputer>
+struct IsDefaultIndexComputer
+{
+    static const bool value = std::is_same<typename std::remove_cv<
+        typename std::remove_reference<IndexComputer>::type>::type, MatIndexComputer>::value;
+};
+
+} // namespace forEach
+} // namespace detail
+
 template<typename _Tp, typename Functor> inline
 void Mat::forEach_impl(const Functor& operation) {
+    forEach_impl<_Tp, Functor, MatIndexComputer>(operation, MatIndexComputer());
+}
+
+template<typename _Tp, typename Functor, typename IndexComputer> inline
+void Mat::forEach_impl(const Functor& operation, const IndexComputer& indexComputer) {
     if (false) {
         operation(*reinterpret_cast<_Tp*>(0), reinterpret_cast<int*>(0));
         // If your compiler fails in this line.
@@ -736,84 +803,164 @@ void Mat::forEach_impl(const Functor& operation) {
     }
 
     CV_Assert(!empty());
-    CV_Assert(this->total() / this->size[this->dims - 1] <= INT_MAX);
-    const int LINES = static_cast<int>(this->total() / this->size[this->dims - 1]);
+    const size_t lines64 = this->total() / static_cast<size_t>(this->size[this->dims - 1]);
+    CV_Assert(lines64 <= static_cast<size_t>(INT_MAX));
+    const int LINES = static_cast<int>(lines64);
 
     class PixelOperationWrapper :public ParallelLoopBody
     {
     public:
-        PixelOperationWrapper(Mat_<_Tp>* const frame, const Functor& _operation)
-            : mat(frame), op(_operation) {}
+        PixelOperationWrapper(Mat_<_Tp>* const frame, const Functor& _operation,
+                              const IndexComputer& _indexComputer)
+            : mat(frame), op(_operation), indexComputer(_indexComputer) {}
         virtual ~PixelOperationWrapper(){}
         // ! Overloaded virtual operator
         // convert range call to row call.
         virtual void operator()(const Range &range) const CV_OVERRIDE
         {
-            const int DIMS = mat->dims;
-            const int COLS = mat->size[DIMS - 1];
-            if (DIMS <= 2) {
-                for (int row = range.start; row < range.end; ++row) {
-                    this->rowCall2(row, COLS);
-                }
-            } else {
-                std::vector<int> idx(DIMS); /// idx is modified in this->rowCall
-                idx[DIMS - 2] = range.start - 1;
+            Mat_<_Tp>* const frame = mat;
+            const int DIMS = frame->dims;
+            const int COLS = frame->size[DIMS - 1];
+            uchar* const data = frame->data;
+            const size_t elemSize = frame->elemSize();
+            // The position array handed to the callback is always `const int*`; keep it
+            // restrict-qualified locally so the compiler can keep the indices in registers.
+            int idxStorage[CV_MAX_DIM] = {0};
+            int* const CV_FOR_EACH_RESTRICT idx = idxStorage;
+            const bool useDefaultIndex =
+                detail::forEach::IsDefaultIndexComputer<IndexComputer>::value;
+            // Byte distance between two successive innermost elements, taken from the
+            // matrix steps. The fast pointer-walk path is only valid when the innermost
+            // dimension is packed (step[dims-1] == elemSize); any larger stride forces
+            // explicit step-based addressing.
+            const size_t innerStep = frame->step[DIMS - 1];
+            const bool innerPacked = (innerStep == elemSize);
 
-                for (int line_num = range.start; line_num < range.end; ++line_num) {
-                    idx[DIMS - 2]++;
-                    for (int i = DIMS - 2; i >= 0; --i) {
-                        if (idx[i] >= mat->size[i]) {
-                            idx[i - 1] += idx[i] / mat->size[i];
-                            idx[i] %= mat->size[i];
-                            continue; // carry-over;
-                        }
-                        else {
-                            break;
+            if (DIMS <= 2)
+            {
+                // 1D and 2D share one path: a 1D matrix is a single line whose only
+                // coordinate is the innermost one, while a 2D matrix adds a row coordinate.
+                const int colAxis = DIMS - 1;          // innermost coordinate
+                for (int lineNum = range.start; lineNum < range.end; ++lineNum)
+                {
+                    if (DIMS == 2)
+                        idx[0] = lineNum;
+                    idx[colAxis] = 0;
+
+                    if (useDefaultIndex && innerPacked)
+                    {
+                        // Packed innermost dimension: consecutive elements are adjacent, so the
+                        // inner loop is a plain pointer walk. Row starts still come from the row
+                        // step, never assuming the whole matrix is continuous (ROIs stay correct).
+                        const size_t rowStep = (DIMS == 2 ? frame->step[0] : innerStep);
+                        _Tp* pixel = reinterpret_cast<_Tp*>(
+                            data + static_cast<size_t>(lineNum) * rowStep);
+                        const _Tp* const pixelEnd = pixel + COLS;
+                        int column = 0;
+                        while (pixel < pixelEnd)
+                        {
+                            idx[colAxis] = column;
+                            op(*pixel, static_cast<const int*>(idx));
+                            ++pixel;
+                            ++column;
                         }
                     }
-                    this->rowCall(&idx[0], COLS, DIMS);
+                    else
+                    {
+                        // Step-driven generic path. With the built-in index computer the row base
+                        // uses the row step and columns advance by innerStep; with an injected
+                        // computer every address is produced by it. No contiguity assumption.
+                        for (int column = 0; column < COLS; ++column)
+                        {
+                            idx[colAxis] = column;
+                            size_t offset;
+                            if (useDefaultIndex)
+                            {
+                                const size_t rowOffset = (DIMS == 2)
+                                    ? static_cast<size_t>(lineNum) * frame->step[0] : 0;
+                                offset = rowOffset + static_cast<size_t>(column) * innerStep;
+                            }
+                            else
+                            {
+                                offset = indexComputer(*frame, idx);
+                            }
+                            _Tp* pixel = reinterpret_cast<_Tp*>(data + offset);
+                            op(*pixel, static_cast<const int*>(idx));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // General N-D path (also leaves room for future 3D+ layouts). Decode the flat
+                // line number into the leading coordinates using unsigned line strides.
+                size_t lineStride[CV_MAX_DIM];
+                size_t stride = 1;
+                for (int d = DIMS - 2; d >= 0; --d)
+                {
+                    lineStride[d] = stride;
+                    stride *= static_cast<size_t>(frame->size[d]);
+                }
+
+                const bool useFastPath = useDefaultIndex;
+
+                for (int lineNum = range.start; lineNum < range.end; ++lineNum)
+                {
+                    size_t remaining = static_cast<size_t>(lineNum);
+                    for (int d = 0; d < DIMS - 1; ++d)
+                    {
+                        idx[d] = static_cast<int>(remaining / lineStride[d]);
+                        remaining %= lineStride[d];
+                    }
+                    idx[DIMS - 1] = 0;
+
+                    if (useFastPath)
+                    {
+                        size_t lineOffset = 0;
+                        for (int d = 0; d < DIMS - 1; ++d)
+                            lineOffset += static_cast<size_t>(idx[d]) * frame->step[d];
+                        uchar* linePtr = data + lineOffset;
+                        if (innerPacked)
+                        {
+                            _Tp* pixel = reinterpret_cast<_Tp*>(linePtr);
+                            const _Tp* const pixelEnd = pixel + COLS;
+                            int column = 0;
+                            while (pixel < pixelEnd)
+                            {
+                                idx[DIMS - 1] = column;
+                                op(*pixel, static_cast<const int*>(idx));
+                                ++pixel;
+                                ++column;
+                            }
+                        }
+                        else
+                        {
+                            for (int column = 0; column < COLS; ++column)
+                            {
+                                idx[DIMS - 1] = column;
+                                _Tp* pixel = reinterpret_cast<_Tp*>(
+                                    linePtr + static_cast<size_t>(column) * innerStep);
+                                op(*pixel, static_cast<const int*>(idx));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int column = 0; column < COLS; ++column)
+                        {
+                            idx[DIMS - 1] = column;
+                            const size_t offset = indexComputer(*frame, idx);
+                            _Tp* pixel = reinterpret_cast<_Tp*>(data + offset);
+                            op(*pixel, static_cast<const int*>(idx));
+                        }
+                    }
                 }
             }
         }
     private:
         Mat_<_Tp>* const mat;
         const Functor op;
-        // ! Call operator for each elements in this row.
-        inline void rowCall(int* const idx, const int COLS, const int DIMS) const {
-            int &col = idx[DIMS - 1];
-            col = 0;
-            _Tp* pixel = &(mat->template at<_Tp>(idx));
-
-            while (col < COLS) {
-                op(*pixel, const_cast<const int*>(idx));
-                pixel++; col++;
-            }
-            col = 0;
-        }
-        // ! Call operator for each elements in this row. 2d mat special version.
-        inline void rowCall2(const int row, const int COLS) const {
-            union Index{
-                int body[2];
-                operator const int*() const {
-                    return reinterpret_cast<const int*>(this);
-                }
-                int& operator[](const int i) {
-                    return body[i];
-                }
-            } idx = {{row, 0}};
-            // Special union is needed to avoid
-            // "error: array subscript is above array bounds [-Werror=array-bounds]"
-            // when call the functor `op` such that access idx[3].
-
-            _Tp* pixel = &(mat->template at<_Tp>(idx));
-            const _Tp* const pixel_end = pixel + COLS;
-            // a 1D Mat has a single index, so count along idx[0]
-            const int col_idx = mat->dims == 1 ? 0 : 1;
-            while(pixel < pixel_end) {
-                op(*pixel++, static_cast<const int*>(idx));
-                idx[col_idx]++;
-            }
-        }
+        const IndexComputer indexComputer;
         PixelOperationWrapper& operator=(const PixelOperationWrapper &) {
             CV_Assert(false);
             // We can not remove this implementation because Visual Studio warning C4822.
@@ -821,7 +968,8 @@ void Mat::forEach_impl(const Functor& operation) {
         }
     };
 
-    parallel_for_(cv::Range(0, LINES), PixelOperationWrapper(reinterpret_cast<Mat_<_Tp>*>(this), operation));
+    parallel_for_(cv::Range(0, LINES),
+                  PixelOperationWrapper(reinterpret_cast<Mat_<_Tp>*>(this), operation, indexComputer));
 }
 
 /////////////////////////// Synchronization Primitives ///////////////////////////////

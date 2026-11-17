@@ -2870,6 +2870,180 @@ TEST(Mat1D, forEach_position)
         EXPECT_EQ(i, m.at<int>(i));
 }
 
+namespace {
+
+// Step-based reference offset, using size_t (unsigned) arithmetic exactly as documented.
+static size_t forEachReferenceOffset(const Mat& m, const int* position)
+{
+    size_t offset = 0;
+    for (int d = 0; d < m.dims; ++d)
+        offset += static_cast<size_t>(position[d]) * m.step[d];
+    return offset;
+}
+
+// Runs forEach over every element (single-threaded and with the parallel backend) and records
+// the byte offset the callback was invoked at. Each output element is written independently, so
+// the check itself is free of cross-thread data races.
+template<typename Tp>
+static Mat forEachCollectOffsets(const Mat& m, int numThreads)
+{
+    std::vector<int> shape(m.dims);
+    for (int d = 0; d < m.dims; ++d) shape[d] = m.size[d];
+    Mat offsets(shape, CV_64FC1);
+    const uchar* base = m.data;
+    setNumThreads(numThreads);
+    m.forEach<Tp>([&](const Tp& element, const int* position) {
+        size_t observed = reinterpret_cast<const uchar*>(&element) - base;
+        // Encode a mismatch as a negative sentinel so a wrong offset is never silently accepted.
+        size_t expected = forEachReferenceOffset(m, position);
+        offsets.at<int64_t>(position) = static_cast<int64_t>(
+            observed == expected ? observed : -(static_cast<long long>(observed) + 1));
+    });
+    return offsets;
+}
+
+template<typename Tp>
+static void expectForEachOffsets(const std::string& name, const Mat& m)
+{
+    Mat single = forEachCollectOffsets<Tp>(m, 1);
+    Mat parallel = forEachCollectOffsets<Tp>(m, 8);
+    ASSERT_EQ(m.dims, single.dims);
+    ASSERT_EQ(m.dims, parallel.dims);
+
+    int position[CV_MAX_DIM] = {0};
+    for (size_t flat = 0; flat < m.total(); ++flat)
+    {
+        size_t remaining = flat;
+        for (int d = m.dims - 1; d >= 0; --d)
+        {
+            position[d] = static_cast<int>(remaining % m.size[d]);
+            remaining /= m.size[d];
+        }
+        size_t expected = forEachReferenceOffset(m, position);
+        int64_t gotSingle = single.at<int64_t>(position);
+        int64_t gotParallel = parallel.at<int64_t>(position);
+        EXPECT_EQ(static_cast<int64_t>(expected), gotSingle) << name << " single @ " << flat;
+        EXPECT_EQ(static_cast<int64_t>(expected), gotParallel) << name << " parallel @ " << flat;
+        EXPECT_EQ(gotSingle, gotParallel) << name << " parity @ " << flat;
+    }
+}
+
+// A user-injected layout: doubles every stride, so the innermost dimension is non-packed.
+struct DoubledStrideIndexComputer
+{
+    size_t operator()(const Mat& m, const int* position) const
+    {
+        size_t offset = 0;
+        for (int d = 0; d < m.dims; ++d)
+            offset += static_cast<size_t>(position[d]) * m.step[d] * 2;
+        return offset;
+    }
+};
+
+}  // namespace
+
+TEST(Mat, forEach_positions_all_layouts)
+{
+    const int R = 37, C = 53;
+
+    // 1D continuous
+    expectForEachOffsets<int>("1D continuous", Mat(std::vector<int>{R * C}, CV_32SC1));
+
+    // 1D non-continuous (one element per row of a square storage): must honor step[0].
+    {
+        Mat storage(R, R, CV_32SC1);
+        int sizes[1] = { R };
+        Mat stepped(1, sizes, CV_32SC1, storage.data);
+        stepped.step[0] = storage.step[0];
+        stepped.flags &= ~Mat::CONTINUOUS_FLAG;
+        ASSERT_FALSE(stepped.isContinuous());
+        expectForEachOffsets<int>("1D stepped", stepped);
+    }
+
+    // 2D continuous and padded sub-matrix (ROI).
+    expectForEachOffsets<int>("2D continuous", Mat(R, C, CV_32SC1));
+    {
+        Mat storage(R + 11, C + 19, CV_32SC1);
+        Mat roi = storage(cv::Rect(7, 5, C, R));
+        ASSERT_FALSE(roi.isContinuous());
+        expectForEachOffsets<int>("2D ROI", roi);
+    }
+
+    // Multi-channel ROI (element type is the pixel, not the channel).
+    {
+        Mat storage(R + 11, C + 19, CV_8UC3);
+        Mat roi = storage(cv::Rect(4, 3, C, R));
+        expectForEachOffsets<Vec3b>("multi-channel ROI", roi);
+    }
+
+    // 3D and 5D keep the generic N-D path honest and leave room for future layouts.
+    {
+        int sizes[3] = { 5, 7, 11 };
+        expectForEachOffsets<Vec2i>("3D", Mat(3, sizes, CV_32SC2));
+    }
+    {
+        int sizes[5] = { 2, 3, 2, 3, 2 };
+        expectForEachOffsets<int>("5D", Mat(5, sizes, CV_32SC1));
+    }
+
+    // Non-packed innermost stride: traversal must not assume contiguous columns.
+    {
+        Mat wide(R, C + 3, CV_32SC1, Scalar::all(-1));
+        Mat gapped(R, C, CV_32SC1, wide.data);
+        gapped.step[0] = wide.step[0];
+        gapped.step[1] = sizeof(int) * 2;
+        gapped.flags &= ~Mat::CONTINUOUS_FLAG;
+        ASSERT_GT(gapped.step[1], gapped.elemSize());
+        expectForEachOffsets<int>("non-packed innermost", gapped);
+    }
+}
+
+TEST(Mat, forEach_injected_index_computer)
+{
+    const int R = 4, C = 6;
+    Mat m(R, C, CV_32SC1);
+    const uchar* base = m.data;
+    DoubledStrideIndexComputer computer;
+
+    setNumThreads(4);
+    m.forEach<int>([&](int& element, const int* position) {
+        size_t observed = reinterpret_cast<uchar*>(&element) - base;
+        EXPECT_EQ(computer(m, position), observed);
+    }, computer);
+
+    // The default index computer must reproduce the documented step formula byte-for-byte.
+    MatIndexComputer defaultComputer;
+    setNumThreads(1);
+    m.forEach<int>([&](int& element, const int* position) {
+        size_t observed = reinterpret_cast<uchar*>(&element) - base;
+        EXPECT_EQ(forEachReferenceOffset(m, position), observed);
+        EXPECT_EQ(forEachReferenceOffset(m, position), defaultComputer(m, position));
+    });
+}
+
+TEST(Mat, forEach_position_contract_and_unsigned_safety)
+{
+    // Position stays a const int* with documented per-dimension ranges.
+    Mat m(3, 4, CV_8UC1);
+    setNumThreads(1);
+    m.forEach<uchar>([&](uchar&, const int* position) {
+        EXPECT_GE(position[0], 0); EXPECT_LT(position[0], m.rows);
+        EXPECT_GE(position[1], 0); EXPECT_LT(position[1], m.cols);
+    });
+
+    // Large 1D matrix: offsets must stay non-negative and match the index throughout.
+    const int N = 1 << 20;
+    Mat big(std::vector<int>{N}, CV_32SC1);
+    setNumThreads(1);
+    big.forEach<int>([](int& value, const int* position) { value = position[0]; });
+    for (int i = 0; i < N; i += 997)
+        EXPECT_EQ(i, big.at<int>(i));
+
+    // Empty matrix is rejected rather than invoking the callback on invalid storage.
+    Mat empty;
+    EXPECT_ANY_THROW(empty.forEach<int>([](int& value, const int*) { value = 0; }));
+}
+
 TEST(Mat, ptrVecni_20044)
 {
     Mat_<int> m({3, 4}, {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12});

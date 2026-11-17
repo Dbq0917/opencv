@@ -1382,6 +1382,17 @@ void Mat::forEach(const Functor& operation) const {
     (const_cast<Mat*>(this))->forEach<_Tp>(operation);
 }
 
+template<typename _Tp, typename Functor, typename IndexComputer> inline
+void Mat::forEach(const Functor& operation, const IndexComputer& indexComputer) {
+    this->forEach_impl<_Tp, Functor, IndexComputer>(operation, indexComputer);
+}
+
+template<typename _Tp, typename Functor, typename IndexComputer> inline
+void Mat::forEach(const Functor& operation, const IndexComputer& indexComputer) const {
+    // call as not const
+    (const_cast<Mat*>(this))->forEach<_Tp, Functor, IndexComputer>(operation, indexComputer);
+}
+
 template<typename _Tp> inline
 Mat::operator std::vector<_Tp>() const
 {
@@ -2116,6 +2127,16 @@ void Mat_<_Tp>::forEach(const Functor& operation) {
 template<typename _Tp> template<typename Functor> inline
 void Mat_<_Tp>::forEach(const Functor& operation) const {
     Mat::forEach<_Tp, Functor>(operation);
+}
+
+template<typename _Tp> template<typename Functor, typename IndexComputer> inline
+void Mat_<_Tp>::forEach(const Functor& operation, const IndexComputer& indexComputer) {
+    Mat::forEach<_Tp, Functor, IndexComputer>(operation, indexComputer);
+}
+
+template<typename _Tp> template<typename Functor, typename IndexComputer> inline
+void Mat_<_Tp>::forEach(const Functor& operation, const IndexComputer& indexComputer) const {
+    Mat::forEach<_Tp, Functor, IndexComputer>(operation, indexComputer);
 }
 
 template<typename _Tp> inline
