@@ -149,7 +149,10 @@ static bool ocl_fastNlMeansDenoising(InputArray _src, OutputArray _dst, const fl
                        BORDER_DEFAULT|BORDER_ISOLATED); // create borders in place
     }
     else
-        copyMakeBorder(_src, srcex, borderSize, borderSize, borderSize, borderSize, BORDER_DEFAULT);
+        // BORDER_ISOLATED: never sample pixels outside the given matrix, so
+        // submatrix views (tiles) are denoised independently of parent data.
+        copyMakeBorder(_src, srcex, borderSize, borderSize, borderSize, borderSize,
+                       BORDER_DEFAULT | BORDER_ISOLATED);
 
     _dst.create(size, type);
     UMat dst;

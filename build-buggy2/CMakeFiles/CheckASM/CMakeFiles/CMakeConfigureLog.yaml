@@ -1,0 +1,950 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/uname"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/uname"
+      - "/home/feedback/.local/bin/uname"
+      - "/usr/local/sbin/uname"
+      - "/usr/local/bin/uname"
+      - "/usr/sbin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      The system is: Linux - 6.6.114.1-microsoft-standard-WSL2 - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompiler.cmake:54 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:61 (_cmake_find_compiler)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER"
+    description: "ASM compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/usr/bin/clang"
+    candidate_directories:
+      - "/usr/bin/"
+    found: "/usr/bin/clang"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:170 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" did not match "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      Ubuntu clang version 21.1.8 (6ubuntu1)
+      Target: x86_64-pc-linux-gnu
+      Thread model: posix
+      InstalledDir: /usr/lib/llvm-21/bin
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:170 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is AppleClang using "--version" did not match "(Apple (clang|LLVM) version)":
+      Ubuntu clang version 21.1.8 (6ubuntu1)
+      Target: x86_64-pc-linux-gnu
+      Thread model: posix
+      InstalledDir: /usr/lib/llvm-21/bin
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:1290 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:170 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the ASM compiler is Clang using "--version" matched "(clang version)":
+      Ubuntu clang version 21.1.8 (6ubuntu1)
+      Target: x86_64-pc-linux-gnu
+      Thread model: posix
+      InstalledDir: /usr/lib/llvm-21/bin
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:267 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ar"
+      - "ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-ar"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-ar"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-ar"
+      - "/home/feedback/.local/bin/llvm-ar"
+      - "/usr/local/sbin/llvm-ar"
+      - "/usr/local/bin/llvm-ar"
+      - "/usr/sbin/llvm-ar"
+      - "/sbin/llvm-ar"
+      - "/bin/llvm-ar"
+      - "/snap/bin/llvm-ar"
+    found: "/usr/bin/ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:267 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ranlib"
+      - "ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-ranlib"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-ranlib"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-ranlib"
+      - "/home/feedback/.local/bin/llvm-ranlib"
+      - "/usr/local/sbin/llvm-ranlib"
+      - "/usr/local/bin/llvm-ranlib"
+      - "/usr/sbin/llvm-ranlib"
+      - "/sbin/llvm-ranlib"
+      - "/bin/llvm-ranlib"
+      - "/snap/bin/llvm-ranlib"
+    found: "/usr/bin/ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:267 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "strip"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    found: "/usr/bin/strip"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:267 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld.lld"
+      - "ld"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/ld.lld"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/ld.lld"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/ld.lld"
+      - "/home/feedback/.local/bin/ld.lld"
+      - "/usr/local/sbin/ld.lld"
+      - "/usr/local/bin/ld.lld"
+      - "/usr/sbin/ld.lld"
+      - "/sbin/ld.lld"
+      - "/bin/ld.lld"
+      - "/snap/bin/ld.lld"
+    found: "/usr/bin/ld"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:267 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-nm"
+      - "nm"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-nm"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-nm"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-nm"
+      - "/home/feedback/.local/bin/llvm-nm"
+      - "/usr/local/sbin/llvm-nm"
+      - "/usr/local/bin/llvm-nm"
+      - "/usr/sbin/llvm-nm"
+      - "/sbin/llvm-nm"
+      - "/bin/llvm-nm"
+      - "/snap/bin/llvm-nm"
+    found: "/usr/bin/nm"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:267 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objdump"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    found: "/usr/bin/objdump"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:267 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objcopy"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    found: "/usr/bin/objcopy"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:267 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-readelf"
+      - "readelf"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-readelf"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-readelf"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-readelf"
+      - "/home/feedback/.local/bin/llvm-readelf"
+      - "/usr/local/sbin/llvm-readelf"
+      - "/usr/local/bin/llvm-readelf"
+      - "/usr/sbin/llvm-readelf"
+      - "/sbin/llvm-readelf"
+      - "/bin/llvm-readelf"
+      - "/snap/bin/llvm-readelf"
+    found: "/usr/bin/readelf"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:267 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-dlltool"
+      - "dlltool"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-dlltool"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-dlltool"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-dlltool"
+      - "/home/feedback/.local/bin/llvm-dlltool"
+      - "/usr/local/sbin/llvm-dlltool"
+      - "/usr/local/bin/llvm-dlltool"
+      - "/usr/sbin/llvm-dlltool"
+      - "/sbin/llvm-dlltool"
+      - "/bin/llvm-dlltool"
+      - "/snap/bin/llvm-dlltool"
+      - "/usr/bin/dlltool"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/dlltool"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/dlltool"
+      - "/home/feedback/.local/bin/dlltool"
+      - "/usr/local/sbin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/usr/sbin/dlltool"
+      - "/sbin/dlltool"
+      - "/bin/dlltool"
+      - "/snap/bin/dlltool"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:267 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-addr2line"
+      - "addr2line"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-addr2line"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-addr2line"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-addr2line"
+      - "/home/feedback/.local/bin/llvm-addr2line"
+      - "/usr/local/sbin/llvm-addr2line"
+      - "/usr/local/bin/llvm-addr2line"
+      - "/usr/sbin/llvm-addr2line"
+      - "/sbin/llvm-addr2line"
+      - "/bin/llvm-addr2line"
+      - "/snap/bin/llvm-addr2line"
+    found: "/usr/bin/addr2line"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:267 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/tapi"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/tapi"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/tapi"
+      - "/home/feedback/.local/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/usr/sbin/tapi"
+      - "/sbin/tapi"
+      - "/bin/tapi"
+      - "/snap/bin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/Compiler/Clang-FindBinUtils.cmake:26 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:268 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER_AR"
+    description: "LLVM archiver"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ar-"
+      - "llvm-ar-"
+      - "llvm-ar"
+      - "llvm-ar"
+    candidate_directories:
+      - "/usr/lib/llvm-21/bin/"
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/lib/llvm-21/bin/llvm-ar-"
+      - "/usr/bin/llvm-ar-"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-ar-"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-ar-"
+      - "/home/feedback/.local/bin/llvm-ar-"
+      - "/usr/local/sbin/llvm-ar-"
+      - "/usr/local/bin/llvm-ar-"
+      - "/usr/sbin/llvm-ar-"
+      - "/sbin/llvm-ar-"
+      - "/bin/llvm-ar-"
+      - "/snap/bin/llvm-ar-"
+      - "/usr/lib/llvm-21/bin/llvm-ar-"
+      - "/usr/bin/llvm-ar-"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-ar-"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-ar-"
+      - "/home/feedback/.local/bin/llvm-ar-"
+      - "/usr/local/sbin/llvm-ar-"
+      - "/usr/local/bin/llvm-ar-"
+      - "/usr/sbin/llvm-ar-"
+      - "/sbin/llvm-ar-"
+      - "/bin/llvm-ar-"
+      - "/snap/bin/llvm-ar-"
+    found: "/usr/lib/llvm-21/bin/llvm-ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/Compiler/Clang-FindBinUtils.cmake:38 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:268 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER_RANLIB"
+    description: "Generate index for LLVM archive"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ranlib-"
+      - "llvm-ranlib-"
+      - "llvm-ranlib"
+      - "llvm-ranlib"
+    candidate_directories:
+      - "/usr/lib/llvm-21/bin/"
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/lib/llvm-21/bin/llvm-ranlib-"
+      - "/usr/bin/llvm-ranlib-"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-ranlib-"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-ranlib-"
+      - "/home/feedback/.local/bin/llvm-ranlib-"
+      - "/usr/local/sbin/llvm-ranlib-"
+      - "/usr/local/bin/llvm-ranlib-"
+      - "/usr/sbin/llvm-ranlib-"
+      - "/sbin/llvm-ranlib-"
+      - "/bin/llvm-ranlib-"
+      - "/snap/bin/llvm-ranlib-"
+      - "/usr/lib/llvm-21/bin/llvm-ranlib-"
+      - "/usr/bin/llvm-ranlib-"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-ranlib-"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-ranlib-"
+      - "/home/feedback/.local/bin/llvm-ranlib-"
+      - "/usr/local/sbin/llvm-ranlib-"
+      - "/usr/local/bin/llvm-ranlib-"
+      - "/usr/sbin/llvm-ranlib-"
+      - "/sbin/llvm-ranlib-"
+      - "/bin/llvm-ranlib-"
+      - "/snap/bin/llvm-ranlib-"
+    found: "/usr/lib/llvm-21/bin/llvm-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/Compiler/Clang-FindBinUtils.cmake:50 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineASMCompiler.cmake:268 (include)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER_CLANG_SCAN_DEPS"
+    description: "`clang-scan-deps` dependency scanner"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "clang-scan-deps-"
+      - "clang-scan-deps-"
+      - "clang-scan-deps"
+      - "clang-scan-deps"
+    candidate_directories:
+      - "/usr/lib/llvm-21/bin/"
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/lib/llvm-21/bin/clang-scan-deps-"
+      - "/usr/bin/clang-scan-deps-"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/clang-scan-deps-"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/clang-scan-deps-"
+      - "/home/feedback/.local/bin/clang-scan-deps-"
+      - "/usr/local/sbin/clang-scan-deps-"
+      - "/usr/local/bin/clang-scan-deps-"
+      - "/usr/sbin/clang-scan-deps-"
+      - "/sbin/clang-scan-deps-"
+      - "/bin/clang-scan-deps-"
+      - "/snap/bin/clang-scan-deps-"
+      - "/usr/lib/llvm-21/bin/clang-scan-deps-"
+      - "/usr/bin/clang-scan-deps-"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/clang-scan-deps-"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/clang-scan-deps-"
+      - "/home/feedback/.local/bin/clang-scan-deps-"
+      - "/usr/local/sbin/clang-scan-deps-"
+      - "/usr/local/bin/clang-scan-deps-"
+      - "/usr/sbin/clang-scan-deps-"
+      - "/sbin/clang-scan-deps-"
+      - "/bin/clang-scan-deps-"
+      - "/snap/bin/clang-scan-deps-"
+    found: "/usr/lib/llvm-21/bin/clang-scan-deps"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+...

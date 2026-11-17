@@ -1,0 +1,2224 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/uname"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/uname"
+      - "/home/feedback/.local/bin/uname"
+      - "/usr/local/sbin/uname"
+      - "/usr/local/bin/uname"
+      - "/usr/sbin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      The system is: Linux - 6.6.114.1-microsoft-standard-WSL2 - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeNinjaFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Program used to build from build.ninja files."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ninja-build"
+      - "ninja"
+      - "samu"
+    candidate_directories:
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/ninja-build"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/ninja"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/samu"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/ninja-build"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/ninja"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/samu"
+      - "/home/feedback/.local/bin/ninja-build"
+      - "/home/feedback/.local/bin/ninja"
+      - "/home/feedback/.local/bin/samu"
+      - "/usr/local/sbin/ninja-build"
+      - "/usr/local/sbin/ninja"
+      - "/usr/local/sbin/samu"
+      - "/usr/local/bin/ninja-build"
+      - "/usr/local/bin/ninja"
+      - "/usr/local/bin/samu"
+      - "/usr/sbin/ninja-build"
+      - "/usr/sbin/ninja"
+      - "/usr/sbin/samu"
+      - "/usr/bin/ninja-build"
+    found: "/usr/bin/ninja"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompiler.cmake:115 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:71 (_cmake_find_compiler_path)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "clang++"
+    candidate_directories:
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/clang++"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/clang++"
+      - "/home/feedback/.local/bin/clang++"
+      - "/usr/local/sbin/clang++"
+      - "/usr/local/bin/clang++"
+      - "/usr/sbin/clang++"
+    found: "/usr/bin/clang++"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/clang++ 
+      Build flags: -fsanitize=address;-fno-omit-frame-pointer;-g;-O1
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is Clang, found in:
+        /home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/4.2.3/CompilerIdCXX/a.out
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ar"
+      - "ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-ar"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-ar"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-ar"
+      - "/home/feedback/.local/bin/llvm-ar"
+      - "/usr/local/sbin/llvm-ar"
+      - "/usr/local/bin/llvm-ar"
+      - "/usr/sbin/llvm-ar"
+      - "/sbin/llvm-ar"
+      - "/bin/llvm-ar"
+      - "/snap/bin/llvm-ar"
+    found: "/usr/bin/ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ranlib"
+      - "ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-ranlib"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-ranlib"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-ranlib"
+      - "/home/feedback/.local/bin/llvm-ranlib"
+      - "/usr/local/sbin/llvm-ranlib"
+      - "/usr/local/bin/llvm-ranlib"
+      - "/usr/sbin/llvm-ranlib"
+      - "/sbin/llvm-ranlib"
+      - "/bin/llvm-ranlib"
+      - "/snap/bin/llvm-ranlib"
+    found: "/usr/bin/ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-strip"
+      - "strip"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-strip"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-strip"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-strip"
+      - "/home/feedback/.local/bin/llvm-strip"
+      - "/usr/local/sbin/llvm-strip"
+      - "/usr/local/bin/llvm-strip"
+      - "/usr/sbin/llvm-strip"
+      - "/sbin/llvm-strip"
+      - "/bin/llvm-strip"
+      - "/snap/bin/llvm-strip"
+    found: "/usr/bin/strip"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld.lld"
+      - "ld"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/ld.lld"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/ld.lld"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/ld.lld"
+      - "/home/feedback/.local/bin/ld.lld"
+      - "/usr/local/sbin/ld.lld"
+      - "/usr/local/bin/ld.lld"
+      - "/usr/sbin/ld.lld"
+      - "/sbin/ld.lld"
+      - "/bin/ld.lld"
+      - "/snap/bin/ld.lld"
+    found: "/usr/bin/ld"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-nm"
+      - "nm"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-nm"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-nm"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-nm"
+      - "/home/feedback/.local/bin/llvm-nm"
+      - "/usr/local/sbin/llvm-nm"
+      - "/usr/local/bin/llvm-nm"
+      - "/usr/sbin/llvm-nm"
+      - "/sbin/llvm-nm"
+      - "/bin/llvm-nm"
+      - "/snap/bin/llvm-nm"
+    found: "/usr/bin/nm"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-objdump"
+      - "objdump"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-objdump"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-objdump"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-objdump"
+      - "/home/feedback/.local/bin/llvm-objdump"
+      - "/usr/local/sbin/llvm-objdump"
+      - "/usr/local/bin/llvm-objdump"
+      - "/usr/sbin/llvm-objdump"
+      - "/sbin/llvm-objdump"
+      - "/bin/llvm-objdump"
+      - "/snap/bin/llvm-objdump"
+    found: "/usr/bin/objdump"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-objcopy"
+      - "objcopy"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-objcopy"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-objcopy"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-objcopy"
+      - "/home/feedback/.local/bin/llvm-objcopy"
+      - "/usr/local/sbin/llvm-objcopy"
+      - "/usr/local/bin/llvm-objcopy"
+      - "/usr/sbin/llvm-objcopy"
+      - "/sbin/llvm-objcopy"
+      - "/bin/llvm-objcopy"
+      - "/snap/bin/llvm-objcopy"
+    found: "/usr/bin/objcopy"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-readelf"
+      - "readelf"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-readelf"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-readelf"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-readelf"
+      - "/home/feedback/.local/bin/llvm-readelf"
+      - "/usr/local/sbin/llvm-readelf"
+      - "/usr/local/bin/llvm-readelf"
+      - "/usr/sbin/llvm-readelf"
+      - "/sbin/llvm-readelf"
+      - "/bin/llvm-readelf"
+      - "/snap/bin/llvm-readelf"
+    found: "/usr/bin/readelf"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-dlltool"
+      - "dlltool"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-dlltool"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-dlltool"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-dlltool"
+      - "/home/feedback/.local/bin/llvm-dlltool"
+      - "/usr/local/sbin/llvm-dlltool"
+      - "/usr/local/bin/llvm-dlltool"
+      - "/usr/sbin/llvm-dlltool"
+      - "/sbin/llvm-dlltool"
+      - "/bin/llvm-dlltool"
+      - "/snap/bin/llvm-dlltool"
+      - "/usr/bin/dlltool"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/dlltool"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/dlltool"
+      - "/home/feedback/.local/bin/dlltool"
+      - "/usr/local/sbin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/usr/sbin/dlltool"
+      - "/sbin/dlltool"
+      - "/bin/dlltool"
+      - "/snap/bin/dlltool"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-addr2line"
+      - "addr2line"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-addr2line"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-addr2line"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-addr2line"
+      - "/home/feedback/.local/bin/llvm-addr2line"
+      - "/usr/local/sbin/llvm-addr2line"
+      - "/usr/local/bin/llvm-addr2line"
+      - "/usr/sbin/llvm-addr2line"
+      - "/sbin/llvm-addr2line"
+      - "/bin/llvm-addr2line"
+      - "/snap/bin/llvm-addr2line"
+    found: "/usr/bin/addr2line"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/bin/tapi"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/tapi"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/tapi"
+      - "/home/feedback/.local/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/usr/sbin/tapi"
+      - "/sbin/tapi"
+      - "/bin/tapi"
+      - "/snap/bin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/Compiler/Clang-FindBinUtils.cmake:26 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_AR"
+    description: "LLVM archiver"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ar-21.1"
+      - "llvm-ar-21"
+      - "llvm-ar21"
+      - "llvm-ar"
+    candidate_directories:
+      - "/usr/lib/llvm-21/bin/"
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/lib/llvm-21/bin/llvm-ar-21.1"
+      - "/usr/bin/llvm-ar-21.1"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-ar-21.1"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-ar-21.1"
+      - "/home/feedback/.local/bin/llvm-ar-21.1"
+      - "/usr/local/sbin/llvm-ar-21.1"
+      - "/usr/local/bin/llvm-ar-21.1"
+      - "/usr/sbin/llvm-ar-21.1"
+      - "/sbin/llvm-ar-21.1"
+      - "/bin/llvm-ar-21.1"
+      - "/snap/bin/llvm-ar-21.1"
+      - "/usr/lib/llvm-21/bin/llvm-ar-21"
+    found: "/usr/bin/llvm-ar-21"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/Compiler/Clang-FindBinUtils.cmake:38 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_RANLIB"
+    description: "Generate index for LLVM archive"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ranlib-21.1"
+      - "llvm-ranlib-21"
+      - "llvm-ranlib21"
+      - "llvm-ranlib"
+    candidate_directories:
+      - "/usr/lib/llvm-21/bin/"
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/lib/llvm-21/bin/llvm-ranlib-21.1"
+      - "/usr/bin/llvm-ranlib-21.1"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/llvm-ranlib-21.1"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/llvm-ranlib-21.1"
+      - "/home/feedback/.local/bin/llvm-ranlib-21.1"
+      - "/usr/local/sbin/llvm-ranlib-21.1"
+      - "/usr/local/bin/llvm-ranlib-21.1"
+      - "/usr/sbin/llvm-ranlib-21.1"
+      - "/sbin/llvm-ranlib-21.1"
+      - "/bin/llvm-ranlib-21.1"
+      - "/snap/bin/llvm-ranlib-21.1"
+      - "/usr/lib/llvm-21/bin/llvm-ranlib-21"
+    found: "/usr/bin/llvm-ranlib-21"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/Compiler/Clang-FindBinUtils.cmake:50 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS"
+    description: "`clang-scan-deps` dependency scanner"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "clang-scan-deps-21.1"
+      - "clang-scan-deps-21"
+      - "clang-scan-deps21"
+      - "clang-scan-deps"
+    candidate_directories:
+      - "/usr/lib/llvm-21/bin/"
+      - "/usr/bin/"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/usr/lib/llvm-21/bin/clang-scan-deps-21.1"
+      - "/usr/bin/clang-scan-deps-21.1"
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/clang-scan-deps-21.1"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/clang-scan-deps-21.1"
+      - "/home/feedback/.local/bin/clang-scan-deps-21.1"
+      - "/usr/local/sbin/clang-scan-deps-21.1"
+      - "/usr/local/bin/clang-scan-deps-21.1"
+      - "/usr/sbin/clang-scan-deps-21.1"
+      - "/sbin/clang-scan-deps-21.1"
+      - "/bin/clang-scan-deps-21.1"
+      - "/snap/bin/clang-scan-deps-21.1"
+      - "/usr/lib/llvm-21/bin/clang-scan-deps-21"
+    found: "/usr/bin/clang-scan-deps-21"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompiler.cmake:115 (find_program)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:67 (_cmake_find_compiler_path)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "clang++"
+    candidate_directories:
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/"
+      - "/home/feedback/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/snap/bin/"
+    searched_directories:
+      - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path/clang++"
+      - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea/clang++"
+      - "/home/feedback/.local/bin/clang++"
+      - "/usr/local/sbin/clang++"
+      - "/usr/local/bin/clang++"
+      - "/usr/sbin/clang++"
+    found: "/usr/bin/clang++"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: -fsanitize=address;-fno-omit-frame-pointer;-g;-O1
+      Id flags:  
+      
+      The output was:
+      1
+      clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+      CMakeCCompilerId.c:2:3: error: "A C++ compiler has been selected for C."
+          2 | # error "A C++ compiler has been selected for C."
+            |   ^
+      1 error generated.
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: -fsanitize=address;-fno-omit-frame-pointer;-g;-O1
+      Id flags: -c 
+      
+      The output was:
+      1
+      clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+      CMakeCCompilerId.c:2:3: error: "A C++ compiler has been selected for C."
+          2 | # error "A C++ compiler has been selected for C."
+            |   ^
+      1 error generated.
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: -fsanitize=address;-fno-omit-frame-pointer;-g;-O1
+      Id flags: -Aa 
+      
+      The output was:
+      1
+      clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+      clang++: warning: argument unused during compilation: '-Aa' [-Wunused-command-line-argument]
+      CMakeCCompilerId.c:2:3: error: "A C++ compiler has been selected for C."
+          2 | # error "A C++ compiler has been selected for C."
+            |   ^
+      1 error generated.
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: -fsanitize=address;-fno-omit-frame-pointer;-g;-O1
+      Id flags: -D__CLASSIC_C__ 
+      
+      The output was:
+      1
+      clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+      CMakeCCompilerId.c:2:3: error: "A C++ compiler has been selected for C."
+          2 | # error "A C++ compiler has been selected for C."
+            |   ^
+      CMakeCCompilerId.c:471:29: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        471 | char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";
+            |                             ^
+      CMakeCCompilerId.c:855:29: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        855 | char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";
+            |                             ^
+      CMakeCCompilerId.c:856:25: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        856 | char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";
+            |                         ^
+      CMakeCCompilerId.c:887:3: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        887 |   "INFO" ":" "standard_default[" C_VERSION "]";
+            |   ^
+      CMakeCCompilerId.c:889:48: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        889 | const char* info_language_extensions_default = "INFO" ":" "extensions_default["
+            |                                                ^
+      CMakeCCompilerId.c:905:10: error: unknown type name 'argc'
+        905 | int main(argc, argv) int argc; char *argv[];
+            |          ^
+      CMakeCCompilerId.c:905:16: error: unknown type name 'argv'
+        905 | int main(argc, argv) int argc; char *argv[];
+            |                ^
+      CMakeCCompilerId.c:905:21: error: expected ';' after top level declarator
+        905 | int main(argc, argv) int argc; char *argv[];
+            |                     ^
+            |                     ;
+      CMakeCCompilerId.c:905:38: error: definition of variable with array type needs an explicit size or an initializer
+        905 | int main(argc, argv) int argc; char *argv[];
+            |                                      ^
+      CMakeCCompilerId.c:909:1: error: expected unqualified-id
+        909 | {
+            | ^
+      5 warnings and 6 errors generated.
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: -fsanitize=address;-fno-omit-frame-pointer;-g;-O1
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      1
+      clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+      CMakeCCompilerId.c:2:3: error: "A C++ compiler has been selected for C."
+          2 | # error "A C++ compiler has been selected for C."
+            |   ^
+      1 error generated.
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: -fsanitize=address;-fno-omit-frame-pointer;-g;-O1
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      1
+      clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+      CMakeCCompilerId.c:2:3: error: "A C++ compiler has been selected for C."
+          2 | # error "A C++ compiler has been selected for C."
+            |   ^
+      1 error generated.
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+      CMakeCCompilerId.c:2:3: error: "A C++ compiler has been selected for C."
+          2 | # error "A C++ compiler has been selected for C."
+            |   ^
+      1 error generated.
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      1
+      clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+      CMakeCCompilerId.c:2:3: error: "A C++ compiler has been selected for C."
+          2 | # error "A C++ compiler has been selected for C."
+            |   ^
+      1 error generated.
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: -Aa 
+      
+      The output was:
+      1
+      clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+      clang++: warning: argument unused during compilation: '-Aa' [-Wunused-command-line-argument]
+      CMakeCCompilerId.c:2:3: error: "A C++ compiler has been selected for C."
+          2 | # error "A C++ compiler has been selected for C."
+            |   ^
+      1 error generated.
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: -D__CLASSIC_C__ 
+      
+      The output was:
+      1
+      clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+      CMakeCCompilerId.c:2:3: error: "A C++ compiler has been selected for C."
+          2 | # error "A C++ compiler has been selected for C."
+            |   ^
+      CMakeCCompilerId.c:471:29: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        471 | char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";
+            |                             ^
+      CMakeCCompilerId.c:855:29: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        855 | char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";
+            |                             ^
+      CMakeCCompilerId.c:856:25: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        856 | char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";
+            |                         ^
+      CMakeCCompilerId.c:887:3: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        887 |   "INFO" ":" "standard_default[" C_VERSION "]";
+            |   ^
+      CMakeCCompilerId.c:889:48: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        889 | const char* info_language_extensions_default = "INFO" ":" "extensions_default["
+            |                                                ^
+      CMakeCCompilerId.c:905:10: error: unknown type name 'argc'
+        905 | int main(argc, argv) int argc; char *argv[];
+            |          ^
+      CMakeCCompilerId.c:905:16: error: unknown type name 'argv'
+        905 | int main(argc, argv) int argc; char *argv[];
+            |                ^
+      CMakeCCompilerId.c:905:21: error: expected ';' after top level declarator
+        905 | int main(argc, argv) int argc; char *argv[];
+            |                     ^
+            |                     ;
+      CMakeCCompilerId.c:905:38: error: definition of variable with array type needs an explicit size or an initializer
+        905 | int main(argc, argv) int argc; char *argv[];
+            |                                      ^
+      CMakeCCompilerId.c:909:1: error: expected unqualified-id
+        909 | {
+            | ^
+      5 warnings and 6 errors generated.
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      1
+      clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+      CMakeCCompilerId.c:2:3: error: "A C++ compiler has been selected for C."
+          2 | # error "A C++ compiler has been selected for C."
+            |   ^
+      1 error generated.
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.2/Modules/"
+    found: "/usr/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.codex-relay-home-74lpsqf0/.codex-cli/tmp/arg0-linux/codex-arg0NBj4Ea"
+        - "/home/feedback/.codex/packages/standalone/releases/0.167.2-x86_64-unknown-linux-musl/codex-path"
+        - "/home/feedback/.local/bin"
+        - "/home/feedback/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+        - "/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      1
+      clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+      CMakeCCompilerId.c:2:3: error: "A C++ compiler has been selected for C."
+          2 | # error "A C++ compiler has been selected for C."
+            |   ^
+      1 error generated.
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Checking whether the C compiler is IAR using "" did not match "IAR .+ Compiler":
+      clang++: error: no input files
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Checking whether the C compiler is IAR using "" did not match "IAR .+ Compiler":
+      clang++: error: no input files
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/usr/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:78 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-LcmaeM"
+      binary: "/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-LcmaeM"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/usr/bin/clang-scan-deps-21"
+      CMAKE_CXX_FLAGS: "-fsanitize=address -fno-omit-frame-pointer -g -O1"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "-fsanitize=address"
+      CMAKE_POSITION_INDEPENDENT_CODE: "ON"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-LcmaeM'
+        
+        Run Build Command(s): /usr/bin/ninja -v cmTC_8bea9
+        [1/2] /usr/bin/clang++   -fsanitize=address -fno-omit-frame-pointer -g -O1  -fPIE   -v -MD -MT CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp
+        Ubuntu clang version 21.1.8 (6ubuntu1)
+        Target: x86_64-pc-linux-gnu
+        Thread model: posix
+        InstalledDir: /usr/lib/llvm-21/bin
+        Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+        Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/15
+        Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/15
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         (in-process)
+         "/usr/lib/llvm-21/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -O1 -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debug-info-kind=constructor -dwarf-version=5 -debugger-tuning=gdb -fdebug-compilation-dir=/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-LcmaeM -v -fcoverage-compilation-dir=/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-LcmaeM -resource-dir /usr/lib/llvm-21/lib/clang/21 -dependency-file CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15 -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/x86_64-linux-gnu/c++/15 -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/backward -internal-isystem /usr/lib/llvm-21/lib/clang/21/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/15/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fsanitize=address -fsanitize-system-ignorelist=/usr/lib/llvm-21/lib/clang/21/share/asan_ignorelist.txt -fno-sanitize-memory-param-retval -fsanitize-address-use-after-scope -fsanitize-address-globals-dead-stripping -fno-assume-sane-operator-new -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp
+        clang -cc1 version 21.1.8 based upon LLVM 21.1.8 default target x86_64-pc-linux-gnu
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/15/../../../../x86_64-linux-gnu/include"
+        ignoring nonexistent directory "/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15
+         /usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/x86_64-linux-gnu/c++/15
+         /usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/backward
+         /usr/lib/llvm-21/lib/clang/21/include
+         /usr/local/include
+         /usr/include/x86_64-linux-gnu
+         /usr/include
+        End of search list.
+        [2/2] : && /usr/bin/clang++ -fsanitize=address -fno-omit-frame-pointer -g -O1 -fsanitize=address -v -Wl,-v CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_8bea9   && :
+        Ubuntu clang version 21.1.8 (6ubuntu1)
+        Target: x86_64-pc-linux-gnu
+        Thread model: posix
+        InstalledDir: /usr/lib/llvm-21/bin
+        Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+        Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/15
+        Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/15
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_8bea9 /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/15 -L/usr/lib/gcc/x86_64-linux-gnu/15/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib64 -L/lib -L/usr/lib --whole-archive /usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_static-x86_64.a --no-whole-archive --whole-archive /usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan-x86_64.a --no-whole-archive --dynamic-list=/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan-x86_64.a.syms --whole-archive /usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_cxx-x86_64.a --no-whole-archive --dynamic-list=/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_cxx-x86_64.a.syms -v CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm --no-as-needed -lpthread -lrt -lm -ldl -lresolv -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o /lib/x86_64-linux-gnu/crtn.o
+        GNU ld (GNU Binutils for Ubuntu) 2.46
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15]
+          add: [/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/x86_64-linux-gnu/c++/15]
+          add: [/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/backward]
+          add: [/usr/lib/llvm-21/lib/clang/21/include]
+          add: [/usr/local/include]
+          add: [/usr/include/x86_64-linux-gnu]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15] ==> [/usr/include/c++/15]
+        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/x86_64-linux-gnu/c++/15] ==> [/usr/include/x86_64-linux-gnu/c++/15]
+        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/backward] ==> [/usr/include/c++/15/backward]
+        collapse include dir [/usr/lib/llvm-21/lib/clang/21/include] ==> [/usr/lib/llvm-21/lib/clang/21/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/include/c++/15;/usr/include/x86_64-linux-gnu/c++/15;/usr/include/c++/15/backward;/usr/lib/llvm-21/lib/clang/21/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-LcmaeM']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_8bea9]
+        ignore line: [[1/2] /usr/bin/clang++   -fsanitize=address -fno-omit-frame-pointer -g -O1  -fPIE   -v -MD -MT CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Ubuntu clang version 21.1.8 (6ubuntu1)]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /usr/lib/llvm-21/bin]
+        ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+        ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/15]
+        ignore line: [Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/15]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        ignore line: [ (in-process)]
+        ignore line: [ "/usr/lib/llvm-21/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -O1 -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debug-info-kind=constructor -dwarf-version=5 -debugger-tuning=gdb -fdebug-compilation-dir=/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-LcmaeM -v -fcoverage-compilation-dir=/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-LcmaeM -resource-dir /usr/lib/llvm-21/lib/clang/21 -dependency-file CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15 -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/x86_64-linux-gnu/c++/15 -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/backward -internal-isystem /usr/lib/llvm-21/lib/clang/21/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/gcc/x86_64-linux-gnu/15/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fsanitize=address -fsanitize-system-ignorelist=/usr/lib/llvm-21/lib/clang/21/share/asan_ignorelist.txt -fno-sanitize-memory-param-retval -fsanitize-address-use-after-scope -fsanitize-address-globals-dead-stripping -fno-assume-sane-operator-new -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang -cc1 version 21.1.8 based upon LLVM 21.1.8 default target x86_64-pc-linux-gnu]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/15/../../../../x86_64-linux-gnu/include"]
+        ignore line: [ignoring nonexistent directory "/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15]
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/x86_64-linux-gnu/c++/15]
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/backward]
+        ignore line: [ /usr/lib/llvm-21/lib/clang/21/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include/x86_64-linux-gnu]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [[2/2] : && /usr/bin/clang++ -fsanitize=address -fno-omit-frame-pointer -g -O1 -fsanitize=address -v -Wl -v CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_8bea9   && :]
+        ignore line: [Ubuntu clang version 21.1.8 (6ubuntu1)]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /usr/lib/llvm-21/bin]
+        ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12]
+        ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/15]
+        ignore line: [Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/15]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        link line: [ "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_8bea9 /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/15 -L/usr/lib/gcc/x86_64-linux-gnu/15/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib64 -L/lib -L/usr/lib --whole-archive /usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_static-x86_64.a --no-whole-archive --whole-archive /usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan-x86_64.a --no-whole-archive --dynamic-list=/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan-x86_64.a.syms --whole-archive /usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_cxx-x86_64.a --no-whole-archive --dynamic-list=/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_cxx-x86_64.a.syms -v CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm --no-as-needed -lpthread -lrt -lm -ldl -lresolv -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o /lib/x86_64-linux-gnu/crtn.o]
+          arg [/usr/bin/ld] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_8bea9] ==> ignore
+          arg [/lib/x86_64-linux-gnu/Scrt1.o] ==> obj [/lib/x86_64-linux-gnu/Scrt1.o]
+          arg [/lib/x86_64-linux-gnu/crti.o] ==> obj [/lib/x86_64-linux-gnu/crti.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/15] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/15]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/15/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/15/../../../../lib64]
+          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+          arg [-L/usr/lib64] ==> dir [/usr/lib64]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-L/usr/lib] ==> dir [/usr/lib]
+          arg [--whole-archive] ==> ignore
+          arg [/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_static-x86_64.a] ==> lib [/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_static-x86_64.a]
+          arg [--no-whole-archive] ==> ignore
+          arg [--whole-archive] ==> ignore
+          arg [/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan-x86_64.a] ==> lib [/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan-x86_64.a]
+          arg [--no-whole-archive] ==> ignore
+          arg [--dynamic-list=/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan-x86_64.a.syms] ==> ignore
+          arg [--whole-archive] ==> ignore
+          arg [/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_cxx-x86_64.a] ==> lib [/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_cxx-x86_64.a]
+          arg [--no-whole-archive] ==> ignore
+          arg [--dynamic-list=/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_cxx-x86_64.a.syms] ==> ignore
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_8bea9.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [--no-as-needed] ==> ignore
+          arg [-lpthread] ==> lib [pthread]
+          arg [-lrt] ==> lib [rt]
+          arg [-lm] ==> lib [m]
+          arg [-ldl] ==> lib [dl]
+          arg [-lresolv] ==> lib [resolv]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o]
+          arg [/lib/x86_64-linux-gnu/crtn.o] ==> obj [/lib/x86_64-linux-gnu/crtn.o]
+        linker tool for 'CXX': /usr/bin/ld
+        remove lib [/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_static-x86_64.a]
+        remove lib [/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan-x86_64.a]
+        remove lib [/usr/lib/llvm-21/lib/clang/21/lib/linux/libclang_rt.asan_cxx-x86_64.a]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/15] ==> [/usr/lib/gcc/x86_64-linux-gnu/15]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/15/../../../../lib64] ==> [/usr/lib64]
+        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib64] ==> [/usr/lib64]
+        collapse library dir [/lib] ==> [/lib]
+        collapse library dir [/usr/lib] ==> [/usr/lib]
+        implicit libs: [stdc++;m;pthread;rt;m;dl;resolv;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/lib/x86_64-linux-gnu/Scrt1.o;/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o;/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/15;/usr/lib64;/lib/x86_64-linux-gnu;/lib64;/usr/lib/x86_64-linux-gnu;/lib;/usr/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/Internal/CMakeDetermineLinkerId.cmake:38 (message)"
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
+      - "/usr/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:78 (project)"
+    message: |
+      Running the CXX compiler's linker: "/usr/bin/ld" "-v"
+      GNU ld (GNU Binutils for Ubuntu) 2.46
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/usr/share/cmake-4.2/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:78 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-YI9yyo"
+      binary: "/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-YI9yyo"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/usr/bin/clang-scan-deps-21"
+      CMAKE_C_FLAGS: "-fsanitize=address -fno-omit-frame-pointer -g -O1"
+      CMAKE_C_FLAGS_DEBUG: ""
+      CMAKE_EXE_LINKER_FLAGS: "-fsanitize=address"
+      CMAKE_POSITION_INDEPENDENT_CODE: "ON"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-YI9yyo'
+        
+        Run Build Command(s): /usr/bin/ninja -v cmTC_1e5b7
+        [1/2] /usr/bin/clang++   -fsanitize=address -fno-omit-frame-pointer -g -O1 -o CMakeFiles/cmTC_1e5b7.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-4.2/Modules/CMakeCCompilerABI.c
+        FAILED: [code=1] CMakeFiles/cmTC_1e5b7.dir/CMakeCCompilerABI.c.o 
+        /usr/bin/clang++   -fsanitize=address -fno-omit-frame-pointer -g -O1 -o CMakeFiles/cmTC_1e5b7.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-4.2/Modules/CMakeCCompilerABI.c
+        clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+        /usr/share/cmake-4.2/Modules/CMakeCCompilerABI.c:2:4: error: "A C++ compiler has been selected for C."
+            2 | #  error "A C++ compiler has been selected for C."
+              |    ^
+        1 error generated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-4.2/Modules/CMakeTestCCompiler.cmake:56 (try_compile)"
+      - "CMakeLists.txt:78 (project)"
+    checks:
+      - "Check for working C compiler: /usr/bin/clang++"
+    directories:
+      source: "/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-c43crT"
+      binary: "/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-c43crT"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/usr/bin/clang-scan-deps-21"
+      CMAKE_C_FLAGS: "-fsanitize=address -fno-omit-frame-pointer -g -O1"
+      CMAKE_C_FLAGS_DEBUG: ""
+      CMAKE_EXE_LINKER_FLAGS: "-fsanitize=address"
+      CMAKE_POSITION_INDEPENDENT_CODE: "ON"
+    buildResult:
+      variable: "CMAKE_C_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: '/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-c43crT'
+        
+        Run Build Command(s): /usr/bin/ninja -v cmTC_97dff
+        [1/2] /usr/bin/clang++   -fsanitize=address -fno-omit-frame-pointer -g -O1 -o CMakeFiles/cmTC_97dff.dir/testCCompiler.c.o -c /home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-c43crT/testCCompiler.c
+        FAILED: [code=1] CMakeFiles/cmTC_97dff.dir/testCCompiler.c.o 
+        /usr/bin/clang++   -fsanitize=address -fno-omit-frame-pointer -g -O1 -o CMakeFiles/cmTC_97dff.dir/testCCompiler.c.o -c /home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-c43crT/testCCompiler.c
+        clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+        /home/feedback/feedback/uidreczz28aHEdlp76D/build-asan/CMakeFiles/CMakeScratch/TryCompile-c43crT/testCCompiler.c:2:3: error: "The CMAKE_C_COMPILER is set to a C++ compiler"
+            2 | # error "The CMAKE_C_COMPILER is set to a C++ compiler"
+              |   ^
+        1 error generated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...

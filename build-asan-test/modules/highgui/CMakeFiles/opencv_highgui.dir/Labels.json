@@ -1,0 +1,84 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlp76D/modules/highgui/include/opencv2/highgui.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_highgui",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlp76D/modules/highgui/include/opencv2/highgui/highgui.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_highgui",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlp76D/modules/highgui/include/opencv2/highgui/highgui_winrt.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_highgui",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlp76D/modules/highgui/src/backend.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_highgui",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlp76D/modules/highgui/src/window.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_highgui",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlp76D/modules/highgui/src/roiSelector.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_highgui",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlp76D/modules/highgui/src/precomp.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_highgui",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan-test/cvconfig.h"
+		},
+		{
+			"file" : "/home/feedback/feedback/uidreczz28aHEdlp76D/build-asan-test/opencv2/opencv_modules.hpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Main",
+			"opencv_highgui",
+			"Module"
+		],
+		"name" : "opencv_highgui"
+	}
+}
